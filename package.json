@@ -11,9 +11,14 @@
     "url": "git+https://github.com/mkhoeini/etm.git"
   },
   "author": "MSK & others",
-  "license": "Copywrited",
+  "license": "",
   "bugs": {
     "url": "https://github.com/mkhoeini/etm/issues"
   },
-  "homepage": "https://github.com/mkhoeini/etm#readme"
+  "homepage": "https://github.com/mkhoeini/etm#readme",
+  "devDependencies": {
+    "babel-core": "^5.8.5",
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.10.5"
+  }
 }
