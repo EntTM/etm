@@ -1,5 +1,12 @@
 
-import component from './component.js';
+import React from 'react';
+import Hello from './component';
 
 
-document.body.appendChild(component());
+
+main();
+
+
+function main() {
+  React.render(<Hello />, document.getElementById("app"));
+}

@@ -1,8 +1,6 @@
 
 var path = require('path');
-
-
-module.exports = {
+var config = {
   entry: ['webpack/hot/dev-server', path.resolve(__dirname, 'app/main.js')],
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -18,3 +16,5 @@ module.exports = {
     ]
   }
 };
+
+module.exports = config;
