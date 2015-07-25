@@ -1,0 +1,11 @@
+= Enterprise task manager
+:o: pass:normal[+[{nbsp}]+]
+:c: pass:normal[+[&#10004;]+]
+
+
+== TODO
+
+1. {o} Setup react with babel
+2. {o} Setup tape with a good formatter
+3. {o} Write a test
+4. {o} Mock localStore
