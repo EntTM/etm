@@ -1,0 +1,19 @@
+{
+  "name": "etm",
+  "version": "0.1.0",
+  "description": "Enterprise task manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkhoeini/etm.git"
+  },
+  "author": "MSK & others",
+  "license": "Copywrited",
+  "bugs": {
+    "url": "https://github.com/mkhoeini/etm/issues"
+  },
+  "homepage": "https://github.com/mkhoeini/etm#readme"
+}
