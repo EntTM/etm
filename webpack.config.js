@@ -19,7 +19,11 @@ var config = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          optional: ['runtime', 'es7.asyncFunctions'],
+          stage: 0
+        }
       }
     ],
     preLoaders: [

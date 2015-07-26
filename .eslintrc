@@ -1,48 +1,67 @@
 {
-  // I want to use babel-eslint for parsing!
   "parser": "babel-eslint",
+  "arrowFunctions": true,
+  "blockBindings": true,
+  "classes": true,
+  "defaultParams": true,
+  "destructuring": true,
+  "forOf": true,
+  "generators": true,
+  "modules": true,
+  "objectLiteralComputedProperties": true,
+  "objectLiteralShorthandMethods": true,
+  "objectLiteralShorthandProperties": true,
+  "spread": true,
+  "templateStrings": true,
 
-    "env": {
-      // I write for browser
-      "browser": true,
-      // in CommonJS
-      // "node": true
-    },
+  "env": {
+    "browser": true,
+    "node": true
+  },
 
-    // To give you an idea how to override rule options:
-    "rules": {
-      "quotes": [2, "single"],
-      "eol-last": [0],
-      "no-mixed-requires": [0],
-      "no-underscore-dangle": [0],
-      "strict": 0,
-      "react/display-name": 0,  // React display name; disable
-      "react/jsx-boolean-value": 1,
-      "react/jsx-no-duplicate-props": 1,
-      "react/jsx-no-undef": 1,
-      "react/jsx-quotes": 1,
-      "react/jsx-sort-prop-types": 1,
-      "react/jsx-sort-props": 1,
-      "react/jsx-uses-react": 1,
-      "react/jsx-uses-vars": 1,
-      "react/no-danger": 1,
-      "react/no-did-mount-set-state": 1,
-      "react/no-did-update-set-state": 1,
-      "react/no-multi-comp": 1,
-      "react/no-unknown-property": 1,
-      "react/prop-types": 1,
-      "react/react-in-jsx-scope": 1,
-      "react/require-extension": 1,
-      "react/self-closing-comp": 1,
-      "react/sort-comp": 1,
-      "react/wrap-multilines": 1
-    },
+  "ecmaFeatures": {
+    "jsx": true
+  },
 
-    "ecmaFeatures": {
-      "jsx": true
-    },
+  "plugins": [
+    "react",
+    "babel"
+  ],
 
-    "plugins": [
-      "react"
-    ]
+  "rules": {
+    "quotes": [2, "single"],
+    "eol-last": [0],
+    "no-mixed-requires": [0],
+    "no-underscore-dangle": [0],
+    "strict": 0,
+
+    "babel/block-scoped-var": 1,
+    "babel/object-shorthand": 1,
+    "babel/generator-star": 1,
+    "babel/generator-star-spacing": 1,
+    "babel/new-cap": 1,
+    "babel/object-curly-spacing": 1,
+    "babel/space-in-brackets": 1,
+
+    "react/display-name": 0,  // React display name; disabled
+    "react/jsx-boolean-value": 1,
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-quotes": 1,
+    "react/jsx-sort-prop-types": 1,
+    "react/jsx-sort-props": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-danger": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-unknown-property": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/require-extension": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1
+  }
 }

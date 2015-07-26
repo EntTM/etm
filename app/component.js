@@ -1,10 +1,11 @@
+/* @flow */
 
 import React from 'react';
 
 
 
 class Hello extends React.Component {
-  render() {
+  render(): React.Element {
     return <h1>Hello World!</h1>;
   }
 }

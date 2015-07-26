@@ -26,11 +26,13 @@
     "eslint": "^0.24.1",
     "eslint-friendly-formatter": "^1.1.0",
     "eslint-loader": "^0.14.2",
+    "eslint-plugin-babel": "^1.2.0",
     "eslint-plugin-react": "^3.0.0",
     "webpack": "^1.10.5",
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "babel-runtime": "^5.8.5",
     "react": "^0.13.3"
   }
 }
