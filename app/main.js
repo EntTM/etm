@@ -1,5 +1,6 @@
 /* @flow */
 
+import '../css/app.css';
 import React from 'react';
 import Hello from './component';
 import injectTapEventPlugin from 'react-tap-event-plugin';

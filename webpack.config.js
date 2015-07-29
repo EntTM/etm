@@ -24,6 +24,14 @@ var config = {
           optional: ['runtime', 'es7.asyncFunctions'],
           stage: 0
         }
+      },
+      {
+        test: /\.css$/, // Only .css files
+        loader: 'style!css' // Run both loaders
+      },
+      {
+        test: /\.woff2?$/,
+        loader: 'url?limit=200000'
       }
     ],
     preLoaders: [
