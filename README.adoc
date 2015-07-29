@@ -5,7 +5,10 @@
 
 == TODO
 
-1. {o} Setup react with babel
-2. {o} Setup tape with a good formatter
-3. {o} Write a test
-4. {o} Mock localStore
+. {c} Setup react with babel
+. {c} Setup tape with a good formatter
+. {c} Write a test
+. {o} Mock localStore
+. {o} Add a flux store
+. {o} Add a server communication plain
+. {o} Mock ajax
