@@ -1,8 +1,4 @@
 [ignore]
-.*/lib/.*
-.*/coverage/.*
-.*/scripts/.*
-.*/build/.*
 
 [include]
 
