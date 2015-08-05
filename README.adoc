@@ -3,12 +3,32 @@
 :c: pass:normal[+[&#10004;]+]
 
 
+== Development
+
+* Do a `npm install`
+* Install a `direnv`
+* Install facebook flow
+* Open three terminals
+* In first type:
+
+  $ npm run dev
+
+* In second type:
+
+  $ babel-node ./autotest.js
+
+* In third type:
+
+  $ sane flow
+
+* Code. ;-)
+
 == TODO
 
 . {c} Setup react with babel
 . {c} Setup tape with a good formatter
 . {c} Write a test
-. {o} Mock localStore
+. {c} Mock localStore
 . {o} Add a flux store
 . {o} Add a server communication plain
 . {o} Mock ajax
