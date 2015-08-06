@@ -36,13 +36,10 @@
     "no-underscore-dangle": [0],
     "strict": 0,
 
-    "babel/block-scoped-var": 1,
     "babel/object-shorthand": 1,
-    "babel/generator-star": 1,
     "babel/generator-star-spacing": 1,
     "babel/new-cap": 1,
     "babel/object-curly-spacing": 1,
-    "babel/space-in-brackets": 1,
 
     "react/display-name": 0,  // React display name; disabled
     "react/jsx-boolean-value": 1,

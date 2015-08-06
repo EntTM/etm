@@ -30,5 +30,6 @@
 . {c} Write a test
 . {c} Mock localStore
 . {o} Add a flux store
+. {o} Add React-Router
 . {o} Add a server communication plain
 . {o} Mock ajax

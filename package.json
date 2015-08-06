@@ -25,11 +25,11 @@
     "babel-eslint": "^3.1.26",
     "babel-loader": "^5.3.2",
     "css-loader": "^0.15.6",
-    "eslint": "^0.24.1",
+    "eslint": "^1.0.0",
     "eslint-friendly-formatter": "^1.1.0",
     "eslint-loader": "^0.14.2",
-    "eslint-plugin-babel": "^1.2.0",
-    "eslint-plugin-react": "^3.0.0",
+    "eslint-plugin-babel": "^2.0.0",
+    "eslint-plugin-react": "^3.2.0",
     "exec-sh": "^0.2.0",
     "file-loader": "^0.8.4",
     "localstorage-memory": "^1.0.1",
@@ -45,6 +45,8 @@
     "babel-runtime": "^5.8.5",
     "material-ui": "^0.10.1",
     "react": "^0.13.3",
-    "react-tap-event-plugin": "^0.1.7"
+    "react-redux": "^0.2.2",
+    "react-tap-event-plugin": "^0.1.7",
+    "redux": "^1.0.0-rc"
   }
 }
