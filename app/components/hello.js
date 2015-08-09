@@ -3,7 +3,7 @@
 import React from 'react';
 import {RaisedButton, Dialog, Styles} from 'material-ui';
 import {connect} from 'react-redux';
-import {createTestAction} from './actions';
+import {createTestAction} from '../actions';
 
 
 

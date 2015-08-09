@@ -1,4 +1,4 @@
-/* @flow */
+/* @-flow */
 
 import test from 'tape';
 import createComponent from './create-component';
