@@ -1,8 +1,23 @@
 
 @import url(./fonts.css);
+@import url(./font-icons/style.css);
 
+a {
+  color: #ff4081; /* pinkA200 */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
 
 body {
-  background-color: orange;
-  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
 }
