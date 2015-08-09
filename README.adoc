@@ -29,7 +29,7 @@
 . {c} Setup tape with a good formatter
 . {c} Write a test
 . {c} Mock localStore
-. {o} Add a flux store
-. {o} Add React-Router
+. {c} Add a flux store
+. {c} Add React-Router
 . {o} Add a server communication plain
 . {o} Mock ajax
