@@ -49,12 +49,11 @@ class Master extends React.Component {
     this.refs.leftNav.toggle();
   }
 
-  render() {
+  render() : React.Element {
     var styles = this.getStyles();
     var {router} = this.context;
     var title =
-      router.isActive('current-activities') ? 'فعالیت‌های جاری' :
-      router.isActive('all-activities')     ? 'همه‌ی فعالیت‌ها' :
+      router.isActive('activities')     ? 'فعالیت‌ها' :
       router.isActive('dashboard')          ? 'داشبورد' :
       router.isActive('profile-settings')   ? 'تنظیمات پروفایل' :
       router.isActive('app-settings')       ? 'تنظیمات' :

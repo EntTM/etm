@@ -17,7 +17,7 @@ class ProfileSettings extends React.Component {
     super();
   }
 
-  render() {
+  render() : React.Element {
     return (
       <div>
         <List subheader={<div style={{paddingRight:'16px'}}>تنظیمات عمومی</div>}>

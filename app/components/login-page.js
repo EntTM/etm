@@ -60,7 +60,7 @@ class Login extends React.Component {
     this.refs.signUpDialog.show();
   }
 
-  render() {
+  render() : React.Element {
     var styles = this.getStyles();
 
     var standardActions = [

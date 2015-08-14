@@ -1,6 +1,7 @@
 /* @flow */
 
 import React from 'react';
+import rd3 from 'react-d3-components';
 import {
   Avatar,
   Card,
@@ -9,19 +10,22 @@ import {
   CardHeader,
   CardText,
   CardTitle,
+  FloatingActionButton,
+  FontIcon,
   RaisedButton,
   Snackbar,
   Styles
 } from 'material-ui';
 
+var Transitions = Styles.Transitions;
 var ThemeManager = new Styles.ThemeManager();
 var Colors = Styles.Colors;
 
-class CurrentActivities extends React.Component {
+class Activities extends React.Component {
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: ThemeManager.getCurrentTheme(),
     };
   }
 
@@ -35,6 +39,15 @@ class CurrentActivities extends React.Component {
     return {
       containerStyle: {
         textAlign: 'right'
+      },
+      fabStyle: {
+        position: 'fixed',
+        right: '15px',
+        bottom: '25px',
+        zIndex: '999',
+        direction: 'ltr',
+        transition: 'transform 0.5s',
+        transitionTimingFunction: 'ease-in'
       }
     };
   }
@@ -47,7 +60,11 @@ class CurrentActivities extends React.Component {
     this.refs.snackbar.dismiss();
   }
 
-  render() {
+  _handleFabTouch() {
+    this.refs.snackbar.show();
+  }
+
+  render() : React.Element {
     var styles = this.getStyles();
 
     var avatar = (
@@ -66,15 +83,40 @@ class CurrentActivities extends React.Component {
       <Avatar backgroundColor={Colors.greenA700} />
     );
 
+    // var fabIcon = (this.isExpanded)?
+    //   <FontIcon className="material-icons">clear</FontIcon> :
+    //     <FontIcon className="material-icons">add</FontIcon>;
+
+    var BarChart = rd3.BarChart;
+
+    var data = [{
+      label: 'somethingA',
+      values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
+    }];
+
     return (
       <div style={styles.containerStyle}>
+        <FloatingActionButton
+          isExpanded={false}
+          onTouchTap={this._handleFabTouch}
+          ref="fabButton"
+          style={styles.fabStyle}>
+          <FontIcon className="material-icons" ref="fabIcon">add</FontIcon>
+        </FloatingActionButton>
+
         <Snackbar
           action="لغو"
           autoHideDuration={0}
-          message="فعالیت‌های انجام شده منتقل شد"
+          message="فعالیت مورد نظر تمام شد"
           onActionTouchTap={this._handleSnackbarAction}
           ref="snackbar"
-          style={{float:'left', textAlign:'left'}} />
+          style={{direction: 'rtl', float:'left', textAlign:'left'}}/>
+
+          <BarChart
+              data={data}
+              height={400}
+              margin={{top: 10, bottom: 50, left: 50, right: 10}}
+              width={window.innerWidth}/>
 
         <Card initiallyExpanded={true}>
           <CardHeader
@@ -85,16 +127,10 @@ class CurrentActivities extends React.Component {
             title="فعالیت اول" />
 
           <CardText expandable={true} style={styles.rtl}>
-            <h3>زمان باقی‌مانده: 14 روز و 21 ساعت</h3>
+            <h3>انجام شده در زمان: 14 روز و 21 ساعت</h3>
             <h3>توضیحات:</h3>
             <p>بهبود عملکرد ماژول ایگرگ در صفحه‌ی زد</p>
           </CardText>
-
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone} />
-          </CardActions>
         </Card>
 
         <div style={{height:'5px'}}></div>
@@ -108,16 +144,10 @@ class CurrentActivities extends React.Component {
             title="فعالیت دوم" />
 
           <CardText expandable={true} style={styles.rtl}>
-            <h3>زمان باقی‌مانده: 2 روز و 4 ساعت</h3>
+            <h3>انجام شده در زمان: 2 روز و 4 ساعت</h3>
             <h3>توضیحات:</h3>
             <p>رفع مشکل شماره 541 در صفحه‌ی دوم سایت</p>
           </CardText>
-
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone} />
-          </CardActions>
         </Card>
 
         <div style={{height:'5px'}}></div>
@@ -131,16 +161,10 @@ class CurrentActivities extends React.Component {
             title="فعالیت سوم" />
 
           <CardText expandable={true} style={styles.rtl}>
-            <h3>زمان باقی‌مانده: 7 روز و 1 ساعت</h3>
+            <h3>انجام شده در زمان: 7 روز و 1 ساعت</h3>
             <h3>توضیحات:</h3>
             <p>توسعه‌ی ماژول دلتا</p>
           </CardText>
-
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone} />
-          </CardActions>
         </Card>
 
         <div style={{height:'5px'}}></div>
@@ -154,16 +178,10 @@ class CurrentActivities extends React.Component {
             title="فعالیت چهارم" />
 
           <CardText expandable={true} style={styles.rtl}>
-            <h3>زمان باقی‌مانده: 21 روز و 12 ساعت</h3>
+            <h3>انجام شده در زمان: 21 روز و 12 ساعت</h3>
             <h3>توضیحات:</h3>
             <p>ساخت صفحات مربوط به ماژول تتا</p>
           </CardText>
-
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone} />
-          </CardActions>
         </Card>
       </div>
     );
@@ -171,8 +189,8 @@ class CurrentActivities extends React.Component {
 
 }
 
-CurrentActivities.childContextTypes = {
+Activities.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-export default CurrentActivities;
+export default Activities;

@@ -9,8 +9,7 @@ var {Colors, Spacing, Typography} = Styles;
 
 var menuItems = [
   {type: MenuItem.Types.SUBHEADER, text: 'فعالیت‌ها'},
-  {route: 'all-activities', text: 'همه‌ی فعالیت‌ها'},
-  {route: 'current-activities', text: 'فعالیت‌های جاری'},
+  {route: 'activities', text: 'فعالیت‌ها'},
   {route: 'dashboard', text: 'داشبورد'},
   {type: MenuItem.Types.SUBHEADER, text: 'تنظیمات'},
   {route: 'profile-settings', text: 'تنظیمات پروفایل'},

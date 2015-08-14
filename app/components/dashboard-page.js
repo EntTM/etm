@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
     });
   }
 
-  render() {
+  render() : React.Element {
     var containerStyle = {
       textAlign: 'center',
       paddingTop: '50px'
