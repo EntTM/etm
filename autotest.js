@@ -11,12 +11,16 @@ const appWatcher = sane(appPath, {glob: '**/*.js'});
 const testWatcher = sane(testPath, {glob: '**/*.js'});
 
 appWatcher.on('change', (file) => {
-  const fname = basename(file, '.js');
-  const testFile = join(testPath, `${fname}-test.js`);
+  console.log(`app file changed: ${file}`);
+
+  const fname = file.replace(/\.js$/, '-test.js');
+  const testFile = join(testPath, fname);
   execSh(`babel-node ${testFile} | tap-spec`);
 });
 
 testWatcher.on('change', (file) => {
+  console.log(`test file changed: ${file}`);
+
   const testFile = join(testPath, file);
   execSh(`babel-node ${testFile} | tap-spec`);
 });
