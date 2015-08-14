@@ -19,6 +19,9 @@
     "url": "https://github.com/mkhoeini/etm/issues"
   },
   "homepage": "https://github.com/mkhoeini/etm#readme",
+  "babel": {
+    "stage": 0
+  },
   "devDependencies": {
     "babel": "^5.8.12",
     "babel-core": "^5.8.5",

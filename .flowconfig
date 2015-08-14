@@ -3,6 +3,7 @@
 [include]
 
 [libs]
+./lib
 
 [options]
 module.name_mapper='../css/app.css' -> './empty'
