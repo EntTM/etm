@@ -10,24 +10,26 @@ import {
   TextField
 } from 'material-ui';
 
+
+
 var ThemeManager = new Styles.ThemeManager();
 var Colors = Styles.Colors;
 
 class Login extends React.Component {
 
-  getChildContext() {
+  getChildContext(): Object {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
   }
 
-  componentWillMount() {
+  componentWillMount(): void {
     ThemeManager.setPalette({
       accent1Color: Colors.deepOrange500
     });
   }
 
-  getStyles() {
+  getStyles(): Object {
     return {
       containerStyle: {
         textAlign: 'center',
@@ -56,11 +58,11 @@ class Login extends React.Component {
     };
   }
 
-  _handleSignUpTap() {
+  _handleSignUpTap(): void {
     this.refs.signUpDialog.show();
   }
 
-  render() : React.Element {
+  render(): React.Element {
     var styles = this.getStyles();
 
     var standardActions = [

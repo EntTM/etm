@@ -5,6 +5,8 @@ import Router from 'react-router';
 import AppLeftNav from './app-left-nav';
 import {AppBar, AppCanvas, Menu, Styles} from 'material-ui';
 
+
+
 var RouteHandler = Router.RouteHandler;
 var Colors = Styles.Colors;
 var ThemeManager = new Styles.ThemeManager();
@@ -17,27 +19,14 @@ class Master extends React.Component {
     this._onLeftIconButtonTouchTap = this._onLeftIconButtonTouchTap.bind(this);
   }
 
-  getChildContext() {
+  getChildContext(): Object {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     }
   }
 
-  getStyles() {
-    // var {darkWhite, lightWhite} = Colors;
+  getStyles(): Object {
     return {
-      // a: {
-      //   color: darkWhite
-      // },
-      // p: {
-      //   margin: '0 auto',
-      //   padding: '0',
-      //   color: lightWhite,
-      //   maxWidth: '335px'
-      // },
-      // iconButton: {
-      //   color: darkWhite
-      // },
       containerStyle: {
         paddingTop: '64px',
         direction: 'rtl'
@@ -45,19 +34,19 @@ class Master extends React.Component {
     };
   }
 
-  _onLeftIconButtonTouchTap() {
+  _onLeftIconButtonTouchTap(): void {
     this.refs.leftNav.toggle();
   }
 
-  render() : React.Element {
+  render(): React.Element {
     var styles = this.getStyles();
     var {router} = this.context;
     var title =
-      router.isActive('activities')     ? 'فعالیت‌ها' :
-      router.isActive('dashboard')          ? 'داشبورد' :
-      router.isActive('profile-settings')   ? 'تنظیمات پروفایل' :
-      router.isActive('app-settings')       ? 'تنظیمات' :
-                                              'ثبت نام';
+      router.isActive('activities')       ? 'فعالیت‌ها' :
+      router.isActive('dashboard')        ? 'داشبورد' :
+      router.isActive('profile-settings') ? 'تنظیمات پروفایل' :
+      router.isActive('app-settings')     ? 'تنظیمات' :
+                                            'ثبت نام';
 
     return (
       <AppCanvas>

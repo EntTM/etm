@@ -7,3 +7,4 @@
 
 [options]
 module.name_mapper='../css/app.css' -> './empty'
+module.name_mapper='../../images/avatar.png' -> '../empty'

@@ -16,12 +16,14 @@ import {
   Styles
 } from 'material-ui';
 
+
+
 var ThemeManager = new Styles.ThemeManager();
 var Colors = Styles.Colors;
 
 class Activities extends React.Component {
 
-  constructor(props) {
+  constructor(props: Object) {
     super(props)
     this.state = {isExpanded: false}
     this._handleFabTouch = this._handleFabTouch.bind(this)
@@ -29,19 +31,19 @@ class Activities extends React.Component {
     this._handleSnackbarAction = this._handleSnackbarAction.bind(this)
   }
 
-  getChildContext() {
+  getChildContext(): Object {
     return {
       muiTheme: ThemeManager.getCurrentTheme(),
     };
   }
 
-  componentWillMount() {
+  componentWillMount(): void {
     ThemeManager.setPalette({
       accent1Color: Colors.deepOrange500
     });
   }
 
-  getStyles() {
+  getStyles(): Object {
     return {
       containerStyle: {
         textAlign: 'right'
@@ -67,31 +69,31 @@ class Activities extends React.Component {
     };
   }
 
-  _handleJobDone() {
+  _handleJobDone(): void {
     this.refs.snackbar.show();
   }
 
-  _handleSnackbarAction() {
+  _handleSnackbarAction(): void {
     this.refs.snackbar.dismiss();
   }
 
-  _handleFabTouch() {
+  _handleFabTouch(): void {
     this.setState({isExpanded: !this.state.isExpanded});
   }
 
-  _filterPastTasks() {
+  _filterPastTasks(): void {
     console.log('Filter tasks and show just past Tasks');
   }
 
-  _filterCurrentTasks() {
+  _filterCurrentTasks(): void {
     console.log('Filter tasks and show just current Tasks');
   }
 
-  _filterFutureTasks() {
+  _filterFutureTasks(): void {
     console.log('Filter tasks and show just future Tasks');
   }
 
-  render() : React.Element {
+  render(): React.Element {
     var styles = this.getStyles();
 
     var avatar = (

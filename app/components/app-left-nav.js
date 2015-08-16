@@ -5,6 +5,8 @@ import Router from 'react-router';
 import {MenuItem, LeftNav, Styles, Avatar} from 'material-ui';
 import avatar from '../../images/avatar.png';
 
+
+
 var {Colors, Spacing, Typography} = Styles;
 
 var menuItems = [
@@ -26,7 +28,7 @@ class AppLeftNav extends React.Component {
     this._onHeaderClick = this._onHeaderClick.bind(this);
   }
 
-  getStyles() {
+  getStyles(): Object {
     return {
       containerStyle: {
         direction: 'rtl'
@@ -53,29 +55,31 @@ class AppLeftNav extends React.Component {
     };
   }
 
-  toggle() {
+  toggle(): void {
     this.refs.leftNav.toggle();
   }
 
-  _getSelectedIndex() {
+  _getSelectedIndex(): number {
     var currentItem;
 
     for (var i = menuItems.length - 1; i >= 0; i--) {
       currentItem = menuItems[i];
       if (currentItem.route && this.context.router.isActive(currentItem.route)) return i;
     }
+
+    return -1;
   }
 
-  _onLeftNavChange(e, key, payload) {
+  _onLeftNavChange(e: Object, key: Object, payload: Object): void {
     this.context.router.transitionTo(payload.route);
   }
 
-  _onHeaderClick() {
+  _onHeaderClick(): void {
     this.context.router.transitionTo('profile-settings');
     this.refs.leftNav.close();
   }
 
-  render() {
+  render(): React.Element {
     var styles = this.getStyles();
     var header = (
       <div onTouchTap={this._onHeaderClick} style={styles.headerStyle}>

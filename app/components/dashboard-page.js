@@ -19,32 +19,32 @@ import {
   Tabs
 } from 'material-ui';
 
+
+
 var ThemeManager = new Styles.ThemeManager();
 var Colors = Styles.Colors;
 
 class Dashboard extends React.Component {
 
-  constructor(props) {
+  constructor(props: Object) {
     super(props)
     this.state = {isExpanded: false}
     this._handleFabTouch = this._handleFabTouch.bind(this)
-    // this._handleJobDone = this._handleJobDone.bind(this)
-    // this._handleSnackbarAction = this._handleSnackbarAction.bind(this)
   }
 
-  getChildContext() {
+  getChildContext(): Object {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
   }
 
-  componentWillMount() {
+  componentWillMount(): void {
     ThemeManager.setPalette({
       accent1Color: Colors.deepOrange500
     });
   }
 
-  getStyles() {
+  getStyles(): Object {
     return {
       containerStyle: {
         textAlign: 'right'
@@ -75,23 +75,23 @@ class Dashboard extends React.Component {
     };
   }
 
-  _handleFabTouch() {
+  _handleFabTouch(): void {
     this.setState({isExpanded: !this.state.isExpanded});
   }
 
-  _filterPastTasks() {
+  _filterPastTasks(): void {
     console.log('Filter projects and show just past Projects');
   }
 
-  _filterCurrentTasks() {
+  _filterCurrentTasks(): void {
     console.log('Filter projects and show just current Projects');
   }
 
-  _filterFutureTasks() {
+  _filterFutureTasks(): void {
     console.log('Filter projects and show just future Projects');
   }
 
-  render() : React.Element {
+  render(): React.Element {
     var styles = this.getStyles();
 
     var avatar = (
