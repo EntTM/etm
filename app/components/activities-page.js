@@ -9,12 +9,12 @@ import {
   CardHeader,
   CardText,
   CardTitle,
-  FloatingActionButton,
   FontIcon,
   RaisedButton,
   Snackbar,
   Styles
 } from 'material-ui';
+import Filters from './filters';
 
 
 
@@ -25,8 +25,6 @@ class Activities extends React.Component {
 
   constructor(props: Object) {
     super(props)
-    this.state = {isExpanded: false}
-    this._handleFabTouch = this._handleFabTouch.bind(this)
     this._handleJobDone = this._handleJobDone.bind(this)
     this._handleSnackbarAction = this._handleSnackbarAction.bind(this)
   }
@@ -37,34 +35,10 @@ class Activities extends React.Component {
     };
   }
 
-  componentWillMount(): void {
-    ThemeManager.setPalette({
-      accent1Color: Colors.deepOrange500
-    });
-  }
-
   getStyles(): Object {
     return {
       containerStyle: {
         textAlign: 'right'
-      },
-      fabStyle: {
-        position: 'fixed',
-        right: '15px',
-        bottom: '24px',
-        zIndex: '999',
-        direction: 'ltr',
-        transition: 'transform 0.2s',
-        transitionTimingFunction: 'ease-in'
-      },
-      filterFabsStyle: {
-        position: 'fixed',
-        right: '22px',
-        bottom: '32px',
-        zIndex: '990',
-        direction: 'ltr',
-        transition: 'bottom 0.2s',
-        transitionTimingFunction: 'ease-in',
       }
     };
   }
@@ -75,10 +49,6 @@ class Activities extends React.Component {
 
   _handleSnackbarAction(): void {
     this.refs.snackbar.dismiss();
-  }
-
-  _handleFabTouch(): void {
-    this.setState({isExpanded: !this.state.isExpanded});
   }
 
   _filterPastTasks(): void {
@@ -105,35 +75,12 @@ class Activities extends React.Component {
       values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
     }];
 
-    var rotate45 = {transform: 'rotate(45deg)'};
     return (
       <div style={styles.containerStyle}>
-        <FloatingActionButton
-          onTouchTap={this._handleFabTouch}
-          ref="fab"
-          style={Object.assign({}, styles.fabStyle, this.state.isExpanded && rotate45)} >
-          <FontIcon className="material-icons" ref="fabIcon">add</FontIcon>
-        </FloatingActionButton>
-        <div>
-          <FloatingActionButton
-            mini={true}
-            onTouchTap={this._filterCurrentTasks}
-            style={Object.assign({}, styles.filterFabsStyle, this.state.isExpanded && {bottom: '100px'})} >
-            <FontIcon className="material-icons" ref="fabIcon">play_arrow</FontIcon>
-          </FloatingActionButton>
-          <FloatingActionButton
-            mini={true}
-            onTouchTap={this._filterPastTasks}
-            style={Object.assign({}, styles.filterFabsStyle, this.state.isExpanded && {bottom: '150px'})} >
-            <FontIcon className="material-icons" ref="fabIcon">done</FontIcon>
-          </FloatingActionButton>
-          <FloatingActionButton
-            mini={true}
-            onTouchTap={this._filterFutureTasks}
-            style={Object.assign({}, styles.filterFabsStyle, this.state.isExpanded && {bottom: '200px'})} >
-            <FontIcon className="material-icons" ref="fabIcon">trending_up</FontIcon>
-          </FloatingActionButton>
-        </div>
+        <Filters
+          onCurrentTasks={this._filterCurrentTasks}
+          onFutureTasks={this._filterFutureTasks}
+          onPastTasks={this._filterPastTasks}/>
         <Snackbar
           action="لغو"
           autoHideDuration={0}
