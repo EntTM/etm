@@ -1,20 +1,9 @@
 /* @flow */
 
 import React from 'react';
-import {
-  Avatar,
-  Card,
-  CardActions,
-  CardExpandable,
-  CardHeader,
-  CardText,
-  CardTitle,
-  FontIcon,
-  RaisedButton,
-  Snackbar,
-  Styles
-} from 'material-ui';
+import {Snackbar, Styles} from 'material-ui';
 import Filters from './filters';
+import TaskList from './task-list';
 
 
 
@@ -31,15 +20,7 @@ class Activities extends React.Component {
 
   getChildContext(): Object {
     return {
-      muiTheme: ThemeManager.getCurrentTheme(),
-    };
-  }
-
-  getStyles(): Object {
-    return {
-      containerStyle: {
-        textAlign: 'right'
-      }
+      muiTheme: ThemeManager.getCurrentTheme()
     };
   }
 
@@ -64,116 +45,22 @@ class Activities extends React.Component {
   }
 
   render(): React.Element {
-    var styles = this.getStyles();
-
-    var avatar = (
-      <FontIcon className="material-icons" style={{direction: 'ltr', fontSize: '40px'}}>assignment</FontIcon>
-    );
-
-    var data = [{
-      label: 'somethingA',
-      values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
-    }];
-
     return (
-      <div style={styles.containerStyle}>
+      <div>
         <Filters
           onCurrentTasks={this._filterCurrentTasks}
           onFutureTasks={this._filterFutureTasks}
           onPastTasks={this._filterPastTasks}/>
+
         <Snackbar
           action="لغو"
-          autoHideDuration={0}
+          autoHideDuration={5000}
           message="فعالیت مورد نظر تمام شد"
           onActionTouchTap={this._handleSnackbarAction}
           ref="snackbar"
           style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}/>
 
-        <Card initiallyExpanded={true}>
-          <CardHeader
-            avatar={avatar}
-            showExpandableButton={true}
-            style={{paddingRight: '40px'}}
-            subtitle="پروژه‌ی ایکس"
-            title="فعالیت اول" />
-
-          <CardText expandable={true} style={styles.rtl}>
-            <h3>انجام شده در زمان: 14 روز و 21 ساعت</h3>
-            <h3>توضیحات:</h3>
-            <p>بهبود عملکرد ماژول ایگرگ در صفحه‌ی زد</p>
-          </CardText>
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone}/>
-          </CardActions>
-        </Card>
-
-        <div style={{height:'5px'}}></div>
-
-        <Card initiallyExpanded={true}>
-          <CardHeader
-            avatar={avatar}
-            showExpandableButton={true}
-            style={{paddingRight: '40px'}}
-            subtitle="پروژه‌ی ایکس"
-            title="فعالیت دوم" />
-
-          <CardText expandable={true} style={styles.rtl}>
-            <h3>انجام شده در زمان: 2 روز و 4 ساعت</h3>
-            <h3>توضیحات:</h3>
-            <p>رفع مشکل شماره 541 در صفحه‌ی دوم سایت</p>
-          </CardText>
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone}/>
-          </CardActions>
-        </Card>
-
-        <div style={{height:'5px'}}></div>
-
-        <Card initiallyExpanded={true}>
-          <CardHeader
-            avatar={avatar}
-            showExpandableButton={true}
-            style={{paddingRight: '40px'}}
-            subtitle="پروژه‌ی شرکت دبلیو"
-            title="فعالیت سوم" />
-
-          <CardText expandable={true} style={styles.rtl}>
-            <h3>انجام شده در زمان: 7 روز و 1 ساعت</h3>
-            <h3>توضیحات:</h3>
-            <p>توسعه‌ی ماژول دلتا</p>
-          </CardText>
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone}/>
-          </CardActions>
-        </Card>
-
-        <div style={{height:'5px'}}></div>
-
-        <Card initiallyExpanded={true}>
-          <CardHeader
-            avatar={avatar}
-            showExpandableButton={true}
-            style={{paddingRight: '40px'}}
-            subtitle="پروژه‌ی شرکت دبلیو"
-            title="فعالیت چهارم" />
-
-          <CardText expandable={true} style={styles.rtl}>
-            <h3>انجام شده در زمان: 21 روز و 12 ساعت</h3>
-            <h3>توضیحات:</h3>
-            <p>ساخت صفحات مربوط به ماژول تتا</p>
-          </CardText>
-          <CardActions expandable={true}>
-            <RaisedButton
-              label="اتمام کار"
-              onTouchTap={this._handleJobDone}/>
-          </CardActions>
-        </Card>
+        <TaskList tasks={[]}/>
       </div>
     );
   }
