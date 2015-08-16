@@ -2,16 +2,17 @@
 
 import React from 'react';
 import {Snackbar, Styles} from 'material-ui';
+import {connect} from 'react-redux';
 import Filters from './filters';
 import TaskList from './task-list';
 
 
 
 var ThemeManager = new Styles.ThemeManager();
-var Colors = Styles.Colors;
+var {Colors} = Styles;
+
 
 class Activities extends React.Component {
-
   constructor(props: Object) {
     super(props)
     this._handleJobDone = this._handleJobDone.bind(this)
@@ -45,33 +46,6 @@ class Activities extends React.Component {
   }
 
   render(): React.Element {
-    var tasks = [
-      {
-        subtitle: 'پروژه‌ی ایکس',
-        remaining: '14 روز و 21 ساعت',
-        details: 'بهبود عملکرد ماژول ایگرگ در صفحه‌ی زد',
-        title: 'فعالیت اول'
-      },
-      {
-        subtitle: 'پروژه‌ی ایکس',
-        remaining: '2 روز و 4 ساعت',
-        details: 'رفع مشکل شماره 541 در صفحه‌ی دوم سایت',
-        title: 'فعالیت دوم'
-      },
-      {
-        subtitle: 'پروژه‌ی شرکت دبلیو',
-        remaining: '7 روز و 1 ساعت',
-        details: 'توسعه‌ی ماژول دلتا',
-        title: 'فعالیت سوم'
-      },
-      {
-        subtitle: 'پروژه‌ی شرکت دبلیو',
-        remaining: '21 روز و 12 ساعت',
-        details: 'ساخت صفحات مربوط به ماژول تتا',
-        title: 'فعالیت چهارم'
-      },
-    ];
-
     return (
       <div>
         <Filters
@@ -89,15 +63,20 @@ class Activities extends React.Component {
 
         <TaskList
           onJobFinish={(j) => this._handleJobDone()}
-          tasks={tasks}/>
+          tasks={this.props.tasks}/>
       </div>
     );
   }
-
 }
 
 Activities.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-export default Activities;
+Activities.propTypes = {
+  dispatch: React.PropTypes.Function,
+  tasks: React.PropTypes.Array
+};
+
+
+export default connect(s => s)(Activities);

@@ -5,10 +5,39 @@ import {TEST_ACTION} from './actions';
 
 
 
-export function test(state: any = {text: 'Hello World'}, action: Action): any {
+var initialTasks = [
+  {
+    subtitle: 'پروژه‌ی ایکس',
+    remaining: '14 روز و 21 ساعت',
+    details: 'بهبود عملکرد ماژول ایگرگ در صفحه‌ی زد',
+    title: 'فعالیت اول'
+  },
+  {
+    subtitle: 'پروژه‌ی ایکس',
+    remaining: '2 روز و 4 ساعت',
+    details: 'رفع مشکل شماره 541 در صفحه‌ی دوم سایت',
+    title: 'فعالیت دوم'
+  },
+  {
+    subtitle: 'پروژه‌ی شرکت دبلیو',
+    remaining: '7 روز و 1 ساعت',
+    details: 'توسعه‌ی ماژول دلتا',
+    title: 'فعالیت سوم'
+  },
+  {
+    subtitle: 'پروژه‌ی شرکت دبلیو',
+    remaining: '21 روز و 12 ساعت',
+    details: 'ساخت صفحات مربوط به ماژول تتا',
+    title: 'فعالیت چهارم'
+  }
+];
+
+export function tasks(state: any, action: Action): any {
+  if (typeof state === 'undefined') {
+    state = initialTasks;
+  }
+
   switch(action.type){
-    case TEST_ACTION:
-      return {...state, text: action.text};
     default:
       return state;
   }
