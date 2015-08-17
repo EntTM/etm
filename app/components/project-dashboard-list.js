@@ -18,12 +18,13 @@ import {
   Tab,
   Tabs
 } from 'material-ui';
+import ProjectDashboard from './project-dashboard';
 
 
 
 var Colors = Styles.Colors;
 
-class DashboardProjectList extends React.Component {
+class ProjectDashboardList extends React.Component {
   getStyles(): Object {
     return {
       progressStyle: {
@@ -66,46 +67,7 @@ class DashboardProjectList extends React.Component {
 
     return (
       <div>
-        <Card initiallyExpanded={true}>
-          <CardHeader
-            avatar={avatar}
-            showExpandableButton={true}
-            style={{paddingRight: '40px'}}
-            title="پروژه‌ی ایکس" />
-
-          <CardText expandable={true} style={{padding: '0', margin: '0'}}>
-            <div style={{display: 'block', textAlign: 'center', backgroundColor: Colors.red500}}>
-              <h5 style={styles.progressStyle}>زمان پروژه
-                <CircularProgress
-                  mode="determinate"
-                  style={{verticalAlign: 'middle', transform: 'rotate(-90deg)', marginRight: '15px'}}
-                  value={60} />
-              </h5>
-              <h5 style={styles.progressStyle}>وضعیت پروژه
-                <CircularProgress
-                  mode="determinate"
-                  style={{verticalAlign: 'middle', transform: 'rotate(-90deg)', marginRight: '15px'}}
-                  value={40} />
-              </h5>
-            </div>
-            <Tabs style={{direction:'ltr'}}>
-              <Tab label="پیشرفت پروژه">
-                <AreaChart
-                  data={areaData}
-                  height={400}
-                  margin={{top: 10, bottom: 50, left: 30, right: 40}}
-                  width={window.innerWidth}/>
-              </Tab>
-              <Tab label="نمودار میله‌ای">
-                <BarChart
-                  data={barData}
-                  height={400}
-                  margin={{top: 10, bottom: 50, left: 30, right: 40}}
-                  width={window.innerWidth}/>
-              </Tab>
-            </Tabs>
-          </CardText>
-        </Card>
+        <ProjectDashboard/>
 
         <div style={{height:'5px'}}></div>
 
@@ -198,4 +160,4 @@ class DashboardProjectList extends React.Component {
 }
 
 
-export default DashboardProjectList;
+export default ProjectDashboardList;

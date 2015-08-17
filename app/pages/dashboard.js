@@ -3,7 +3,7 @@
 import React from 'react';
 import {Styles} from 'material-ui';
 import Filters from '../components/filters';
-import DashboardProjectList from '../components/dashboard-project-list';
+import ProjectDashboardList from '../components/project-dashboard-list';
 
 
 
@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
           onPastTasks={this._filterPastTasks}
         />
 
-        <DashboardProjectList/>
+        <ProjectDashboardList/>
       </div>
     );
   }
