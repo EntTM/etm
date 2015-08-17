@@ -2,13 +2,13 @@
 
 import React from 'react';
 import {Route, DefaultRoute, NotFoundRoute} from 'react-router';
-import NotFound from './components/not-found';
-import Master from './components/master';
-import Login from './components/login-page';
-import Activities from './components/activities-page';
-import Dashboard from './components/dashboard-page';
-import ProfileSettings from './components/profile-settings-page';
-import AppSettings from './components/app-settings-page';
+import NotFound from './pages/not-found';
+import Master from './pages/master';
+import Login from './pages/login';
+import Activities from './pages/activities';
+import Dashboard from './pages/dashboard';
+import ProfileSettings from './pages/profile-settings';
+import AppSettings from './pages/app-settings';
 
 var routes = (
   <Route handler={Master} name="root" path="/">

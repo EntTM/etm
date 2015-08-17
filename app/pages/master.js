@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Router from 'react-router';
-import AppLeftNav from './app-left-nav';
+import AppLeftNav from '../components/app-left-nav';
 import {AppBar, AppCanvas, Menu, Styles} from 'material-ui';
 
 
@@ -13,9 +13,8 @@ var ThemeManager = new Styles.ThemeManager();
 
 
 class Master extends React.Component {
-
-  constructor() {
-    super();
+  constructor(props: Object) {
+    super(props);
     this._onLeftIconButtonTouchTap = this._onLeftIconButtonTouchTap.bind(this);
   }
 

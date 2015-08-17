@@ -3,8 +3,8 @@
 import React from 'react';
 import {Snackbar, Styles} from 'material-ui';
 import {connect} from 'react-redux';
-import Filters from './filters';
-import TaskList from './task-list';
+import Filters from '../components/filters';
+import TaskList from '../components/task-list';
 import {ActivitiesPageSelector} from '../selectors';
 
 
