@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import {Route, DefaultRoute, NotFoundRoute} from 'react-router';
+import {Route, NotFoundRoute, Redirect} from 'react-router';
 import NotFound from './pages/not-found';
 import Master from './pages/master';
 import Login from './pages/login';
@@ -20,9 +20,9 @@ var routes = (
 
     {(() => {
       if (localStorage.loggedIn) {
-        return (<DefaultRoute handler={Activities}/>);
+        return (<Redirect to='activities'/>);
       } else {
-        return (<DefaultRoute handler={Login}/>);
+        return (<Redirect to='login'/>);
       }
     })()}
     <NotFoundRoute handler={NotFound} />
