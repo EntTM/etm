@@ -4,8 +4,9 @@ import {createSelector} from 'reselect';
 
 
 
-var tasksSelector = (s) => s.tasks;
-var projectsSelector = (s) => s.projects;
+var tasksSelector = s => s.tasks;
+var projectsSelector = s => s.projects;
+var globalSelector = s => s.global;
 
 
 export var ActivitiesPageSelector = createSelector(
@@ -21,4 +22,9 @@ export var DashboardPageSelector = createSelector(
 export var LoginPageSelector = createSelector(
   [],
   () => {return {}}
+);
+
+export var MasterPageSelector = createSelector(
+  [globalSelector],
+  (global) => {return {loading: global.loading}}
 );

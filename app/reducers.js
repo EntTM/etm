@@ -1,7 +1,9 @@
 /* @flow */
 
 import type {Action} from './actions';
-import {} from './actions';
+import {
+  LOADING_ACTION
+} from './actions';
 import {Styles} from 'material-ui';
 
 
@@ -103,6 +105,20 @@ export function projects(state: any, action: Action): any {
   }
 
   switch(action.type){
+    default:
+      return state;
+  }
+}
+
+
+export function global(state: any, action: Action): any {
+  if (typeof state === 'undefined') {
+    state = {loading: false};
+  }
+
+  switch(action.type){
+    case LOADING_ACTION:
+      return {...state, loading: action.loading};
     default:
       return state;
   }

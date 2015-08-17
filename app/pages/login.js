@@ -8,7 +8,7 @@ import {
   TextField
 } from 'material-ui';
 import {connect} from 'react-redux';
-import {createLoginAction} from '../actions';
+import {loginAction, loadingAction} from '../actions';
 import {LoginPageSelector} from '../selectors';
 
 
@@ -50,9 +50,10 @@ class Login extends React.Component {
 
   _handleSignUpTap(): void {
     // this.refs.signUpDialog.show();
+    this.props.dispatch(loadingAction(true));
     var usr = this.refs.username.getValue();
     var pw  = this.refs.password.getValue();
-    this.props.dispatch(createLoginAction(usr, pw));
+    this.props.dispatch(loginAction(usr, pw));
   }
 
   render(): React.Element {

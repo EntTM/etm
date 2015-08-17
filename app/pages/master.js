@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Router from 'react-router';
+import {connect} from 'react-redux';
+import {MasterPageSelector} from '../selectors';
 import AppLeftNav from '../components/app-left-nav';
-import {AppBar, AppCanvas, Styles} from 'material-ui';
+import {AppBar, AppCanvas, CircularProgress, Styles} from 'material-ui';
 
 
 
@@ -46,14 +48,24 @@ class Master extends React.Component {
       'dashboard': 'داشبورد',
       'profile-settings': 'تنظیمات پروفایل',
       'app-settings': 'تنظیمات',
-      'login': 'ثبت نام'
+      'login': 'ورود'
     };
     var title = titleMap[currentRoute];
+
+    var loadingIcon;
+    if (this.props.loading) {
+      loadingIcon = <CircularProgress color='white' size={0.5}/>;
+    }
+    else {
+      loadingIcon = <CircularProgress mode='determinate' size={0.5} value={0}/>;
+    }
 
     return (
       <AppCanvas>
         <AppBar
+          iconElementRight={loadingIcon}
           onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
+          showMenuIconButton={!!localStorage.loggedIn}
           title={title}
           zDepth={0}
         />
@@ -76,4 +88,9 @@ Master.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-export default Master;
+Master.propTypes = {
+  loading: React.PropTypes.bool
+};
+
+
+export default connect(MasterPageSelector)(Master);
