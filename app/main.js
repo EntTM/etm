@@ -3,8 +3,7 @@
 import '../css/app.css';
 import React from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Router from 'react-router';
-import routes from './routes';
+import router from './router';
 import {Provider} from 'react-redux';
 import {combineReducers, createStore} from 'redux';
 import * as reducers from './reducers';
@@ -19,7 +18,7 @@ var app   = combineReducers(reducers),
 
 
 function main() {
-  Router.run(routes, Router.HashLocation, (Root) => {
+  router.run((Root) => {
     React.render(
       <Provider store={store}>
         {() => <Root />}
