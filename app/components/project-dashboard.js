@@ -8,14 +8,11 @@ import {
   CardText,
   CircularProgress,
   FontIcon,
-  Styles,
   Tab,
   Tabs
 } from 'material-ui';
 
 
-
-var {Colors} = Styles;
 
 class ProjectDashboard extends React.Component {
   getStyles(): Object {
@@ -40,30 +37,17 @@ class ProjectDashboard extends React.Component {
       </FontIcon>
     );
 
-    var {title, projectTime, projectStatus} = {
-      projectStatus: 40,
-      projectTime: 60,
-      title: 'پروژه‌ی ایکس'
-    };
-
-    var barData = [{
-      label: 'somethingA',
-      values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
-    }];
-
-    var areaData = [
-      {
-        label: 'somethingA',
-        values: [{x: 0, y: 2}, {x: 1.3, y: 5}, {x: 3, y: 6}, {x: 3.5, y: 6.5}, {x: 4, y: 6}, {x: 4.5, y: 6}, {x: 5, y: 7}, {x: 5.5, y: 8}]
-      },
-      {
-        label: 'somethingB',
-        values: [{x: 0, y: 3}, {x: 1.3, y: 4}, {x: 3, y: 7}, {x: 3.5, y: 8}, {x: 4, y: 7}, {x: 4.5, y: 7}, {x: 5, y: 7.8}, {x: 5.5, y: 9}]
-      }
-    ];
+    var {
+      title,
+      color,
+      barData,
+      areaData,
+      projectTime,
+      projectStatus
+    } = this.props.project;
 
     return (
-      <Card initiallyExpanded={true}>
+      <Card initiallyExpanded={true} style={this.props.style}>
         <CardHeader
           avatar={avatar}
           showExpandableButton={true}
@@ -71,7 +55,7 @@ class ProjectDashboard extends React.Component {
           title={title}/>
 
         <CardText expandable={true} style={{padding: '0', margin: '0'}}>
-          <div style={{display: 'block', textAlign: 'center', backgroundColor: Colors.red500}}>
+          <div style={{display: 'block', textAlign: 'center', backgroundColor: color}}>
             <h5 style={styles.progressStyle}>زمان پروژه
               <CircularProgress
                 mode="determinate"
@@ -106,6 +90,11 @@ class ProjectDashboard extends React.Component {
     );
   }
 }
+
+ProjectDashboard.propTypes = {
+  project: React.PropTypes.object,
+  style: React.PropTypes.object
+};
 
 
 export default ProjectDashboard;
