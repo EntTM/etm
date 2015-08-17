@@ -3,13 +3,13 @@
 import React from 'react';
 import Router from 'react-router';
 import AppLeftNav from '../components/app-left-nav';
-import {AppBar, AppCanvas, Menu, Styles} from 'material-ui';
+import {AppBar, AppCanvas, Styles} from 'material-ui';
 
 
+
+var ThemeManager = new Styles.ThemeManager();
 
 var RouteHandler = Router.RouteHandler;
-var Colors = Styles.Colors;
-var ThemeManager = new Styles.ThemeManager();
 
 
 class Master extends React.Component {
@@ -40,27 +40,29 @@ class Master extends React.Component {
   render(): React.Element {
     var styles = this.getStyles();
     var {router} = this.context;
-    var title =
-      router.isActive('activities')       ? 'فعالیت‌ها' :
-      router.isActive('dashboard')        ? 'داشبورد' :
-      router.isActive('profile-settings') ? 'تنظیمات پروفایل' :
-      router.isActive('app-settings')     ? 'تنظیمات' :
-                                            'ثبت نام';
+    var currentRoute = router.getRouteAtDepth(1).name;
+    var titleMap = {
+      'activities': 'فعالیت‌ها',
+      'dashboard': 'داشبورد',
+      'profile-settings': 'تنظیمات پروفایل',
+      'app-settings': 'تنظیمات',
+      'login': 'ثبت نام'
+    };
+    var title = titleMap[currentRoute];
 
     return (
       <AppCanvas>
-
         <AppBar
           onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
           title={title}
-          zDepth={0} />
+          zDepth={0}
+        />
 
-        <AppLeftNav ref="leftNav" />
+        <AppLeftNav ref="leftNav"/>
 
         <div style={styles.containerStyle}>
-          <RouteHandler />
+          <RouteHandler/>
         </div>
-
       </AppCanvas>
     );
   }
