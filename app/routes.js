@@ -1,31 +1,30 @@
-let React = require('react');
-let Router = require('react-router');
-let Route = Router.Route;
-let Redirect = Router.Redirect;
-let DefaultRoute = Router.DefaultRoute;
+/* @flow */
 
-// Here we define all our material-ui ReactComponents.
-let Master = require('./components/master.jsx');
-let Login = require('./components/pages/login.jsx');
+import React from 'react';
+import {Route, DefaultRoute, NotFoundRoute} from 'react-router';
+import NotFound from './components/not-found';
+import Master from './components/master';
+import Login from './components/login-page';
+// import AllActivities from './components/pages/all-activities';
+// import CurrentActivities from './components/pages/current-activities';
+// import Dashboard from './components/pages/dashboard';
+// import ProfileSettings from './components/pages/profile-settings';
+// import AppSettings from './components/pages/app-settings';
 
-let AllActivities = require('./components/pages/all-activities.jsx');
-let CurrentActivities = require('./components/pages/current-activities.jsx');
-let Dashboard = require('./components/pages/dashboard.jsx');
-
-let ProfileSettings = require('./components/pages/profile-settings.jsx');
-let AppSettings = require('./components/pages/app-settings.jsx');
-
-let AppRoutes = (
-  <Route name="root" path="/" handler={Master}>
-    <Route name="login" handler={Login} />
-    <Route name="all-activities" handler={AllActivities} />
-    <Route name="current-activities" handler={CurrentActivities} />
-    <Route name="dashboard" handler={Dashboard} />
-    <Route name="profile-settings" handler={ProfileSettings} />
-    <Route name="app-settings" handler={AppSettings} />
+var routes = (
+  <Route handler={Master} name="root" path="/">
+    <Route handler={Login} name="login" />
+    {/*
+    <Route handler={AllActivities} name="all-activities" />
+    <Route handler={CurrentActivities} name="current-activities" />
+    <Route handler={Dashboard} name="dashboard" />
+    <Route handler={ProfileSettings} name="profile-settings" />
+    <Route handler={AppSettings} name="app-settings" />
+    */}
 
     <DefaultRoute handler={Login}/>
+    <NotFoundRoute handler={NotFound} />
   </Route>
 );
 
-module.exports = AppRoutes;
+export default routes;
