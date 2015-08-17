@@ -1,30 +1,27 @@
-let React = require('react');
-let {CircularProgress, Styles} = require('material-ui');
+/* @flow */
 
-let ThemeManager = new Styles.ThemeManager();
-let Colors = Styles.Colors;
+import React from 'react';
+import {CircularProgress, Styles} from 'material-ui';
 
-let DashboardPage = React.createClass({
+var ThemeManager = new Styles.ThemeManager();
+var Colors = Styles.Colors;
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
+class Dashboard extends React.Component {
 
   getChildContext() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
-  },
+  }
 
   componentWillMount() {
     ThemeManager.setPalette({
       accent1Color: Colors.deepOrange500
     });
-  },
+  }
 
   render() {
-
-    let containerStyle = {
+    var containerStyle = {
       textAlign: 'center',
       paddingTop: '50px'
     };
@@ -33,11 +30,15 @@ let DashboardPage = React.createClass({
       <div style={containerStyle}>
         <h1>Enterprise Task Manager</h1>
         <h2>Dashboard</h2>
-        <CircularProgress mode="indeterminate"  />
+        <CircularProgress mode="indeterminate" />
       </div>
     );
-  },
+  }
 
-});
+}
 
-module.exports = DashboardPage;
+Dashboard.childContextTypes = {
+  muiTheme: React.PropTypes.object
+};
+
+export default Dashboard;
