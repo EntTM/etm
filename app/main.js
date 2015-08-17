@@ -5,7 +5,8 @@ import React from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import router from './router';
 import {Provider} from 'react-redux';
-import {combineReducers, createStore} from 'redux';
+import {combineReducers, createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 import * as reducers from './reducers';
 
 
@@ -13,8 +14,10 @@ import * as reducers from './reducers';
 injectTapEventPlugin();
 
 
+var createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+
 var app   = combineReducers(reducers),
-    store = createStore(app);
+    store = createStoreWithMiddleware(app);
 
 
 function main() {
