@@ -5,6 +5,7 @@ import {Snackbar, Styles} from 'material-ui';
 import {connect} from 'react-redux';
 import Filters from './filters';
 import TaskList from './task-list';
+import {ActivitiesPageSelector} from '../selectors';
 
 
 
@@ -79,4 +80,4 @@ Activities.propTypes = {
 };
 
 
-export default connect(s => s)(Activities);
+export default connect(ActivitiesPageSelector)(Activities);
