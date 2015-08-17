@@ -86,9 +86,9 @@ class Filters extends React.Component {
 }
 
 Filters.propTypes = {
-  onCurrentTasks: React.PropTypes.Function,
-  onFutureTasks: React.PropTypes.Function,
-  onPastTasks: React.PropTypes.Function
+  onCurrentTasks: React.PropTypes.func,
+  onFutureTasks: React.PropTypes.func,
+  onPastTasks: React.PropTypes.func
 };
 
 export default Filters;

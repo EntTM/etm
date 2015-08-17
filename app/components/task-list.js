@@ -22,8 +22,8 @@ class TaskList extends React.Component {
 }
 
 TaskList.propTypes = {
-  onJobFinish: React.PropTypes.Function,
-  tasks: React.PropTypes.Array
+  onJobFinish: React.PropTypes.func,
+  tasks: React.PropTypes.array
 };
 
 export default TaskList;

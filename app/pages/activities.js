@@ -75,8 +75,8 @@ Activities.childContextTypes = {
 };
 
 Activities.propTypes = {
-  dispatch: React.PropTypes.Function,
-  tasks: React.PropTypes.Array
+  dispatch: React.PropTypes.func,
+  tasks: React.PropTypes.array
 };
 
 

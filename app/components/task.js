@@ -51,8 +51,8 @@ class Task extends React.Component {
 }
 
 Task.propTypes = {
-  onJobFinish: React.PropTypes.Function,
-  task: React.PropTypes.Object
+  onJobFinish: React.PropTypes.func,
+  task: React.PropTypes.object
 };
 
 export default Task;
