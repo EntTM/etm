@@ -2,26 +2,22 @@
 
 import React from 'react';
 import {
-  MenuItem,
   Checkbox,
   List,
   ListDivider,
-  ListItem,
-  Styles
+  ListItem
 } from 'material-ui';
 
-var Colors = Styles.Colors;
+
 
 class AppSettings extends React.Component {
-
-  constructor() {
-    super();
-  }
-
-  render() : React.Element {
+  render(): React.Element {
     return (
       <div>
-        <List subheader={<div style={{paddingRight:'16px'}}>تنظیمات عمومی</div>}>
+        <List
+          subheader='تنظیمات عمومی'
+          subheaderStyle={{marginRight: '16px'}}
+        >
           <ListItem
             primaryText="تم برنامه"
             secondaryText="تغییر تم کنونی" />
@@ -29,7 +25,10 @@ class AppSettings extends React.Component {
 
         <ListDivider />
 
-        <List subheader={<div style={{paddingRight:'16px'}}>تنظیمات دیگر</div>}>
+        <List
+          subheader='تنظیمات دیگر'
+          subheaderStyle={{marginRight: '16px'}}
+        >
           <ListItem
             leftCheckbox={<Checkbox />}
             primaryText="اعلان‌ها"
@@ -38,7 +37,6 @@ class AppSettings extends React.Component {
       </div>
     );
   }
-
 }
 
 export default AppSettings;
