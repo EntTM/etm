@@ -1,7 +1,7 @@
 /* @flow */
 
 import type {Action} from './actions';
-import {TEST_ACTION} from './actions';
+import {} from './actions';
 import {Styles} from 'material-ui';
 
 

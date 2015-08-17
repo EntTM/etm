@@ -3,23 +3,23 @@
 
 /* Actions */
 
-export var TEST_ACTION = 'TEST_ACTION';
+export var LOGIN_ACTION = 'LOGIN_ACTION';
 
 
 
 /* Action type */
 
 export type Action =
-  {type: 'TEST_ACTION', text: string} |
+  {type: 'LOGIN_ACTION', username: string, password: string} |
   {type: 'other things'};
 
 
 
 /* Action creators */
 
-export function createTestAction(text: string): Action {
+export function createLoginAction(username: string, password: string): Action {
   return {
-    type: TEST_ACTION,
-    text
+    type: LOGIN_ACTION,
+    username, password
   };
 }

@@ -7,6 +7,9 @@ import {
   Styles,
   TextField
 } from 'material-ui';
+import {connect} from 'react-redux';
+import {createLoginAction} from '../actions';
+import {LoginPageSelector} from '../selectors';
 
 
 
@@ -46,7 +49,10 @@ class Login extends React.Component {
   }
 
   _handleSignUpTap(): void {
-    this.refs.signUpDialog.show();
+    // this.refs.signUpDialog.show();
+    var usr = this.refs.username.getValue();
+    var pw  = this.refs.password.getValue();
+    this.props.dispatch(createLoginAction(usr, pw));
   }
 
   render(): React.Element {
@@ -68,26 +74,16 @@ class Login extends React.Component {
 
         <div style={styles.group}>
           <TextField
-            floatingLabelText='نام و نام خانوادگی'
-            hintText='نام واقعی خود را وارد کنید'
-            style={styles.textfield}
-          />
-
-          <TextField
             floatingLabelText='نام کاربری'
             hintText='نام کاربری باید یکتا باشد'
-            style={styles.textfield}
-          />
-
-          <TextField
-            floatingLabelText='پست الکترونیک'
-            hintText='example@sample.com'
+            ref="username"
             style={styles.textfield}
           />
 
           <TextField
             floatingLabelText='رمز عبور'
             hintText='حداقل 8 کاراکتر'
+            ref="password"
             style={styles.textfield}
             type='password'
           />
@@ -108,5 +104,9 @@ Login.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
+Login.propTypes = {
+  dispatch: React.PropTypes.func
+};
 
-export default Login;
+
+export default connect(LoginPageSelector)(Login);

@@ -17,3 +17,8 @@ export var DashboardPageSelector = createSelector(
   [projectsSelector],
   (projects) => {return {projects}}
 );
+
+export var LoginPageSelector = createSelector(
+  [],
+  () => {return {}}
+);
