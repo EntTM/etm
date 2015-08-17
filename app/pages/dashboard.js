@@ -2,6 +2,8 @@
 
 import React from 'react';
 import {Styles} from 'material-ui';
+import {connect} from 'react-redux';
+import {DashboardPageSelector} from '../selectors';
 import Filters from '../components/filters';
 import ProjectDashboardList from '../components/project-dashboard-list';
 
@@ -37,7 +39,7 @@ class Dashboard extends React.Component {
           onPastTasks={this._filterPastTasks}
         />
 
-        <ProjectDashboardList/>
+        <ProjectDashboardList projects={this.props.projects}/>
       </div>
     );
   }
@@ -47,4 +49,10 @@ Dashboard.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-export default Dashboard;
+Dashboard.propTypes = {
+  dispatch: React.PropTypes.func,
+  projects: React.PropTypes.array
+};
+
+
+export default connect(DashboardPageSelector)(Dashboard);
