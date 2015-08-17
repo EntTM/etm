@@ -18,7 +18,13 @@ var routes = (
     <Route handler={Dashboard} name="dashboard" />
     <Route handler={ProfileSettings} name="profile-settings" />
 
-    <DefaultRoute handler={Login}/>
+    {(() => {
+      if (localStorage.loggedIn) {
+        return (<DefaultRoute handler={Activities}/>);
+      } else {
+        return (<DefaultRoute handler={Login}/>);
+      }
+    })()}
     <NotFoundRoute handler={NotFound} />
   </Route>
 );
