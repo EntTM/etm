@@ -1,52 +1,47 @@
 /* @flow */
 
 import React from 'react';
-import {
-  MenuItem,
-  List,
-  ListDivider,
-  ListItem,
-  Styles
-} from 'material-ui';
+import {List, ListDivider, ListItem} from 'material-ui';
 
-var Colors = Styles.Colors;
+
 
 class ProfileSettings extends React.Component {
-
-  constructor() {
-    super();
-  }
-
-  render() : React.Element {
+  render(): React.Element {
     return (
       <div>
-        <List subheader={<div style={{paddingRight:'16px'}}>تنظیمات عمومی</div>}>
+        <List
+          subheader='تنظیمات عمومی'
+          subheaderStyle={{marginRight: '16px'}}
+        >
           <ListItem
             primaryText="نام و نام خانوادگی"
-            secondaryText="حسین نیکپور" />
+            secondaryText="حسین نیکپور"
+          />
 
           <ListItem
             primaryText="نام کاربری"
-            secondaryText="HosseinNikpour" />
+            secondaryText="HosseinNikpour"
+          />
 
-          <ListItem
-            primaryText="رمز عبور" />
+          <ListItem primaryText="رمز عبور"/>
 
-          <ListItem
-            primaryText="تصویر پروفایل" />
+          <ListItem primaryText="تصویر پروفایل"/>
         </List>
 
-        <ListDivider />
+        <ListDivider/>
 
-        <List subheader={<div style={{paddingRight:'16px'}}>تنظیمات دیگر</div>}>
+        <List
+          subheader='تنظیمات دیگر'
+          subheaderStyle={{marginRight: '16px'}}
+        >
           <ListItem
             primaryText="لغو اشتراک برنامه"
-            secondaryText="تمام داده‌ها پاک خواهد شد" />
+            secondaryText="تمام داده‌ها پاک خواهد شد"/>
         </List>
       </div>
     );
   }
-
 }
+
 
 export default ProfileSettings;
