@@ -19,17 +19,16 @@
 
 * In third type:
 
+  $ flow
+
+Check everything is OK. Then:
+
   $ sane flow
 
-* Code. ;-)
+* Launch your browser with `--disable-web-security` command line flage to allow cross origin ajax.
+* Fix the URLs in the `app/settings.js` file to point to the correct address.
+* Peofit. ;-)
 
-== TODO
+== APK
 
-. {c} Setup react with babel
-. {c} Setup tape with a good formatter
-. {c} Write a test
-. {c} Mock localStore
-. {c} Add a flux store
-. {c} Add React-Router
-. {o} Add a server communication plain
-. {o} Mock ajax
+You can find the working APKs in the release tab of github.
