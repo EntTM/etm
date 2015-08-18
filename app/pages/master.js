@@ -2,10 +2,9 @@
 
 import React from 'react';
 import Router from 'react-router';
-import {connect} from 'react-redux';
-import {MasterPageSelector} from '../selectors';
 import AppLeftNav from '../components/app-left-nav';
-import {AppBar, AppCanvas, CircularProgress, Styles} from 'material-ui';
+import {AppCanvas, Styles} from 'material-ui';
+import MainAppBar from '../components/main-app-bar';
 
 
 
@@ -17,7 +16,6 @@ var RouteHandler = Router.RouteHandler;
 class Master extends React.Component {
   constructor(props: Object) {
     super(props);
-    this._onLeftIconButtonTouchTap = this._onLeftIconButtonTouchTap.bind(this);
   }
 
   getChildContext(): Object {
@@ -35,10 +33,6 @@ class Master extends React.Component {
     };
   }
 
-  _onLeftIconButtonTouchTap(): void {
-    this.refs.leftNav.toggle();
-  }
-
   render(): React.Element {
     var styles = this.getStyles();
     var {router} = this.context;
@@ -52,23 +46,9 @@ class Master extends React.Component {
     };
     var title = titleMap[currentRoute];
 
-    var loadingIcon;
-    if (this.props.loading) {
-      loadingIcon = <CircularProgress color='white' size={0.5}/>;
-    }
-    else {
-      loadingIcon = <CircularProgress mode='determinate' size={0.5} value={0}/>;
-    }
-
     return (
       <AppCanvas>
-        <AppBar
-          iconElementRight={loadingIcon}
-          onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-          showMenuIconButton={!!localStorage.loggedIn}
-          title={title}
-          zDepth={0}
-        />
+        <MainAppBar menu={() => this.refs.leftNav.toggle()} title={title}/>
 
         <AppLeftNav ref="leftNav"/>
 
@@ -88,9 +68,5 @@ Master.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-Master.propTypes = {
-  loading: React.PropTypes.bool
-};
 
-
-export default connect(MasterPageSelector)(Master);
+export default Master;

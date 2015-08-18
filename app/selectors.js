@@ -24,7 +24,7 @@ export var LoginPageSelector = createSelector(
   () => {return {}}
 );
 
-export var MasterPageSelector = createSelector(
+export var MainAppBarSelector = createSelector(
   [globalSelector],
   (global) => {return {loading: global.loading}}
 );

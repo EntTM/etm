@@ -1,6 +1,6 @@
 /* @flow */
 
-import {getAllProjects} from './server';
+import {getAllTasks, getAllProjects} from './server';
 import router from './router';
 
 
@@ -8,7 +8,7 @@ import router from './router';
 
 export var LOGIN_ACTION = 'LOGIN_ACTION';
 export var LOADING_ACTION = 'LOADING_ACTION';
-export var FETCH_ALL_PROJECTS_ACTION = 'FETCH_ALL_PROJECTS_ACTION';
+export var FETCH_ALL_DATA_ACTION = 'FETCH_ALL_DATA_ACTION';
 
 
 
@@ -27,11 +27,11 @@ export function loginAction(username: string, password: string): Thunk {
   localStorage.setItem('password',  password);
 
   return dispatch => {
-    getAllProjects()
-      .then(projects => {
-        localStorage.setItem('loggedIn', true);
+    Promise.all([getAllTasks(), getAllProjects()])
+      .then(([tasks, projects]) => {
+        localStorage.setItem('loggedIn', 'true');
         dispatch({type: LOGIN_ACTION, username, password});
-        dispatch({type: FETCH_ALL_PROJECTS_ACTION, projects});
+        dispatch({type: FETCH_ALL_DATA_ACTION, tasks, projects});
         router.transitionTo('activities');
       })
       .catch(error => dispatch({type: LOGIN_ACTION, error}))
@@ -40,7 +40,7 @@ export function loginAction(username: string, password: string): Thunk {
 }
 
 
-export function loadingAction(loading): Action {
+export function loadingAction(loading: bool): Action {
   return {
     type: LOADING_ACTION,
     loading

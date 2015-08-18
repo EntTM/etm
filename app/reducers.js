@@ -2,7 +2,8 @@
 
 import type {Action} from './actions';
 import {
-  LOADING_ACTION
+  LOADING_ACTION,
+  FETCH_ALL_DATA_ACTION
 } from './actions';
 import {Styles} from 'material-ui';
 
@@ -45,6 +46,8 @@ export function tasks(state: any, action: Action): any {
   }
 
   switch(action.type){
+    case FETCH_ALL_DATA_ACTION:
+      return [...state, action.tasks];
     default:
       return state;
   }
@@ -105,6 +108,10 @@ export function projects(state: any, action: Action): any {
   }
 
   switch(action.type){
+    case FETCH_ALL_DATA_ACTION:
+      if (typeof state === 'array') {
+        return [...state, action.projects];
+      }
     default:
       return state;
   }
