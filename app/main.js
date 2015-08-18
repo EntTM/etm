@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import {combineReducers, createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import * as reducers from './reducers';
+import fetch from 'whatwg-fetch';
 
 
 
