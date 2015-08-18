@@ -20,14 +20,14 @@
 * In third type:
 
   $ flow
-
++
 Check everything is OK. Then:
 
   $ sane flow
-
++
 * Launch your browser with `--disable-web-security` command line flage to allow cross origin ajax.
 * Fix the URLs in the `app/settings.js` file to point to the correct address.
-* Peofit. ;-)
+* Profit. ;-)
 
 == APK
 
