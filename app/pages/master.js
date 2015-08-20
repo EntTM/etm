@@ -5,6 +5,7 @@ import Router from 'react-router';
 import AppLeftNav from '../components/app-left-nav';
 import {AppCanvas, Styles} from 'material-ui';
 import MainAppBar from '../components/main-app-bar';
+import background from '../../images/background@blurred.jpg';
 
 
 
@@ -47,7 +48,22 @@ class Master extends React.Component {
     var title = titleMap[currentRoute];
 
     return (
-      <AppCanvas>
+      <div>
+        <img
+          src={background}
+          style={{
+            transform: 'translate3d(0,0,0)',
+            position: 'fixed',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: -1000
+          }}
+        />
+
         <MainAppBar menu={() => this.refs.leftNav.toggle()} title={title}/>
 
         <AppLeftNav ref="leftNav"/>
@@ -55,7 +71,7 @@ class Master extends React.Component {
         <div style={styles.containerStyle}>
           <RouteHandler/>
         </div>
-      </AppCanvas>
+      </div>
     );
   }
 }
