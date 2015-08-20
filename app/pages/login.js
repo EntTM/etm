@@ -49,7 +49,6 @@ class Login extends React.Component {
   }
 
   _handleSignUpTap(): void {
-    // this.refs.signUpDialog.show();
     this.props.dispatch(loadingAction(true));
     var usr = this.refs.username.getValue();
     var pw  = this.refs.password.getValue();
@@ -59,20 +58,8 @@ class Login extends React.Component {
   render(): React.Element {
     var styles = this.getStyles();
 
-    var standardActions = [
-      {text: 'فهمیدم'}
-    ];
-
     return (
       <div style={styles.containerStyle}>
-        <Dialog
-          actions={standardActions}
-          ref='signUpDialog'
-          title='ثبت نام موفق'>
-
-          تبریک... شما با موفقیت ثبت نام کردید.
-        </Dialog>
-
         <div style={styles.group}>
           <TextField
             floatingLabelText='نام کاربری'
