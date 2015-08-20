@@ -8,16 +8,6 @@ import {MainAppBarSelector} from '../selectors';
 
 
 class MainAppBar extends React.Component {
-  constructor(props: Object) {
-    super(props);
-    this._handleMenuTap = this._handleMenuTap.bind(this);
-  }
-
-  _handleMenuTap(): void {
-    console.log(this.props.menu);
-    this.props.menu();
-  }
-
   render(): React.Element {
     var loadingIcon;
     if (this.props.loading) {
@@ -28,13 +18,19 @@ class MainAppBar extends React.Component {
     }
 
     return (
-      <AppBar
-        iconElementRight={loadingIcon}
-        onLeftIconButtonTouchTap={this._handleMenuTap}
-        showMenuIconButton={!!localStorage.getItem('loggedIn')}
-        title={this.props.title}
-        zDepth={0}
-      />
+      <div style={{height: 100}}>
+        <AppBar
+          iconElementRight={loadingIcon}
+          onLeftIconButtonTouchTap={this.props.menu}
+          showMenuIconButton={!!localStorage.getItem('loggedIn')}
+          style={{
+            direction: 'ltr',
+            position: 'fixed'
+          }}
+          title={this.props.title}
+          zDepth={0}
+        />
+      </div>
     );
   }
 }

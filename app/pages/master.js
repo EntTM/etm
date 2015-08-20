@@ -28,7 +28,6 @@ class Master extends React.Component {
   getStyles(): Object {
     return {
       containerStyle: {
-        paddingTop: '64px',
         direction: 'rtl'
       }
     };
@@ -37,18 +36,19 @@ class Master extends React.Component {
   render(): React.Element {
     var styles = this.getStyles();
     var {router} = this.context;
-    var currentRoute = router.getRouteAtDepth(1).name;
+
     var titleMap = {
       'activities': 'فعالیت‌ها',
       'dashboard': 'داشبورد',
       'profile-settings': 'تنظیمات پروفایل',
-      'app-settings': 'تنظیمات',
-      'login': 'ورود'
+      'app-settings': 'تنظیمات'
     };
-    var title = titleMap[currentRoute];
+
+    var currentRoute = router.getRouteAtDepth(2);
+    var title = currentRoute && titleMap[currentRoute.name];
 
     return (
-      <div>
+      <div style={styles.containerStyle}>
         <img
           src={background}
           style={{
@@ -64,13 +64,9 @@ class Master extends React.Component {
           }}
         />
 
-        <MainAppBar menu={() => this.refs.leftNav.toggle()} title={title}/>
-
         <AppLeftNav ref="leftNav"/>
 
-        <div style={styles.containerStyle}>
-          <RouteHandler/>
-        </div>
+        <RouteHandler menu={()=>this.refs.leftNav.toggle()} title={title}/>
       </div>
     );
   }
