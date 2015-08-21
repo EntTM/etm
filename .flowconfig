@@ -9,3 +9,4 @@
 module.name_mapper='../css/app.css' -> './empty'
 module.name_mapper='../../images/avatar.png' -> '../empty'
 module.name_mapper='../../images/background@blurred.jpg' -> '../empty'
+module.name_mapper='../../images/back.png' -> '../empty'

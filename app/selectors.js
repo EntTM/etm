@@ -7,6 +7,7 @@ import {createSelector} from 'reselect';
 var tasksSelector = s => s.tasks;
 var projectsSelector = s => s.projects;
 var globalSelector = s => s.global;
+var loginSelector = s => s.login;
 
 
 export var ActivitiesPageSelector = createSelector(
@@ -20,8 +21,8 @@ export var DashboardPageSelector = createSelector(
 );
 
 export var LoginPageSelector = createSelector(
-  [],
-  () => {return {}}
+  [loginSelector],
+  (login) => {return {loginError: login.loginError}}
 );
 
 export var MainAppBarSelector = createSelector(
