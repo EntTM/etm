@@ -2,15 +2,18 @@
 
 import React from 'react';
 import {
+  Avatar,
   Paper,
   FloatingActionButton,
   FontIcon,
+  RefreshIndicator,
   Styles,
   TextField
 } from 'material-ui';
 import {connect} from 'react-redux';
 import {loginAction, loadingAction} from '../actions';
 import {LoginPageSelector} from '../selectors';
+import back from '../../images/back.png';
 
 
 
@@ -30,11 +33,11 @@ class Login extends React.Component {
   }
 
   getStyles(): Object {
-    return {
+    var styles = {
       containerStyle: {
         width: '85%',
         margin: 'auto',
-        marginTop: 180
+        marginTop: 80
       },
       textfield: {
         display: 'box',
@@ -42,11 +45,10 @@ class Login extends React.Component {
       },
       button: {
         direction: 'ltr',
-        position: 'relative',
-        top: 28,
+        position: 'absolute',
+        left: -28,
         display: 'block',
         width: 56,
-        margin: 'auto',
         textAlign: 'center'
       },
       firstButton: {
@@ -55,23 +57,65 @@ class Login extends React.Component {
         left: '50%',
         top: 400,
         marginLeft: -28
+      },
+      avatar: {
+        position: 'absolute',
+        direction: 'ltr',
+        top: 250,
+        right: 60
+      },
+      signupWrapper: {
+        position: 'relative',
+        height: 26,
+        left: '50%'
       }
     };
+
+    return styles;
   }
 
   _handleSignUpTap(): void {
+    this.setState({kind: 'loading'});
     this.props.dispatch(loadingAction(true));
     var usr = this.refs.username.getValue();
     var pw  = this.refs.password.getValue();
     this.props.dispatch(loginAction(usr, pw));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.loginError && !!nextProps.loginError) {
+      this.setState({kind: 'failed'});
+    }
+  }
+
   render(): React.Element {
     var styles = this.getStyles();
 
+    var signupButton = (<RefreshIndicator left={-28} size={56} status="loading" top={0}/>);
+
+    if (this.state.kind !== 'loading') {
+      signupButton = (
+        <FloatingActionButton
+          backgroundColor={this.state.kind === 'failed' ? 'red' : 'blue'}
+          circle={true}
+          onTouchTap={this._handleSignUpTap}
+          style={styles.button}
+        >
+          <FontIcon className='material-icons'>{this.state.kind === 'login' ? 'vpn_key' : 'warning'}</FontIcon>
+        </FloatingActionButton>
+      );
+    }
+
     var loginDialog = (
       <Paper rounded={true} style={styles.containerStyle}>
-        <h1>ورود</h1>
+        <img
+          src={back}
+          style={{width: '100%', height: 200}}
+        />
+
+        <Avatar size={50} style={styles.avatar}>
+          <FontIcon className='material-icons'>person</FontIcon>
+        </Avatar>
 
         <TextField
           floatingLabelText='نام کاربری'
@@ -88,9 +132,7 @@ class Login extends React.Component {
           type='password'
         />
 
-        <FloatingActionButton circle={true} style={styles.button}>
-          <FontIcon className='material-icons'>vpn_key</FontIcon>
-        </FloatingActionButton>
+        <div style={styles.signupWrapper}>{signupButton}</div>
       </Paper>
     );
 
@@ -105,6 +147,7 @@ class Login extends React.Component {
     switch (this.state.kind) {
       case 'login':
       case 'failed':
+      case 'loading':
         return loginDialog;
       case 'button':
         return enterButton;

@@ -3,6 +3,7 @@
 import type {Action} from './actions';
 import {
   LOADING_ACTION,
+  LOGIN_ACTION,
   FETCH_ALL_DATA_ACTION
 } from './actions';
 import {Styles} from 'material-ui';
@@ -126,6 +127,36 @@ export function global(state: any, action: Action): any {
   switch(action.type){
     case LOADING_ACTION:
       return {...state, loading: action.loading};
+    default:
+      return state;
+  }
+}
+
+
+export function login(state: any, action: Action): any {
+  if (typeof state === 'undefined') {
+    state = {
+      loggedIn: !!localStorage.getItem('loggedIn'),
+      username: localStorage.getItem('username'),
+      password: localStorage.getItem('password'),
+      loginError: false
+    };
+  }
+
+  switch (action.type) {
+    case LOGIN_ACTION:
+      if (!!action.error) {
+        return {...state, loginError: action.error};
+      }
+      else {
+        return {
+          ...state,
+          loggedIn: true,
+          username: action.username,
+          password: action.password,
+          loginError: false
+        };
+      }
     default:
       return state;
   }
