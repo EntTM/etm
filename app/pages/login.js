@@ -2,8 +2,9 @@
 
 import React from 'react';
 import {
-  Dialog,
-  RaisedButton,
+  Paper,
+  FloatingActionButton,
+  FontIcon,
   Styles,
   TextField
 } from 'material-ui';
@@ -18,6 +19,7 @@ var ThemeManager = new Styles.ThemeManager();
 class Login extends React.Component {
   constructor(props: Object) {
     super(props);
+    this.state = {kind: 'button'};
     this._handleSignUpTap = this._handleSignUpTap.bind(this);
   }
 
@@ -30,20 +32,29 @@ class Login extends React.Component {
   getStyles(): Object {
     return {
       containerStyle: {
-        textAlign: 'center',
-        paddingTop: '50px'
-      },
-      group: {
-        width: '100%',
-        float: 'left',
-        marginBottom: 32
+        width: '85%',
+        margin: 'auto',
+        marginTop: 180
       },
       textfield: {
         display: 'box',
         margin: 'auto'
       },
-      raisedbutton: {
-        marginTop: 24
+      button: {
+        direction: 'ltr',
+        position: 'relative',
+        top: 28,
+        display: 'block',
+        width: 56,
+        margin: 'auto',
+        textAlign: 'center'
+      },
+      firstButton: {
+        direction: 'ltr',
+        position: 'absolute',
+        left: '50%',
+        top: 400,
+        marginLeft: -28
       }
     };
   }
@@ -58,33 +69,46 @@ class Login extends React.Component {
   render(): React.Element {
     var styles = this.getStyles();
 
-    return (
-      <div style={styles.containerStyle}>
-        <div style={styles.group}>
-          <TextField
-            floatingLabelText='نام کاربری'
-            hintText='نام کاربری باید یکتا باشد'
-            ref="username"
-            style={styles.textfield}
-          />
+    var loginDialog = (
+      <Paper rounded={true} style={styles.containerStyle}>
+        <h1>ورود</h1>
 
-          <TextField
-            floatingLabelText='رمز عبور'
-            hintText='حداقل 8 کاراکتر'
-            ref="password"
-            style={styles.textfield}
-            type='password'
-          />
+        <TextField
+          floatingLabelText='نام کاربری'
+          hintText='نام کاربری باید یکتا باشد'
+          ref="username"
+          style={styles.textfield}
+        />
 
-          <RaisedButton
-            label='ثبت نام'
-            onTouchTap={this._handleSignUpTap}
-            primary={true}
-            style={styles.raisedbutton}
-          />
-        </div>
-      </div>
+        <TextField
+          floatingLabelText='رمز عبور'
+          hintText='حداقل 8 کاراکتر'
+          ref="password"
+          style={styles.textfield}
+          type='password'
+        />
+
+        <FloatingActionButton circle={true} style={styles.button}>
+          <FontIcon className='material-icons'>vpn_key</FontIcon>
+        </FloatingActionButton>
+      </Paper>
     );
+
+    var enterButton = (
+      <FloatingActionButton
+        onTouchTap={() => this.setState({kind: 'login'})}
+        style={styles.firstButton}>
+        <FontIcon className='material-icons'>arrow_forward</FontIcon>
+      </FloatingActionButton>
+    );
+
+    switch (this.state.kind) {
+      case 'login':
+      case 'failed':
+        return loginDialog;
+      case 'button':
+        return enterButton;
+    }
   }
 }
 
