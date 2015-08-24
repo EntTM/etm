@@ -14,8 +14,7 @@ var menuItems = [
   {route: 'activities', text: 'فعالیت‌ها'},
   {route: 'dashboard', text: 'داشبورد'},
   {type: MenuItem.Types.SUBHEADER, text: 'تنظیمات'},
-  {route: 'profile-settings', text: 'تنظیمات پروفایل'},
-  {route: 'app-settings', text: 'تنظیمات برنامه'},
+  {route: 'settings', text: 'تنظیمات برنامه'},
 ];
 
 class AppLeftNav extends React.Component {

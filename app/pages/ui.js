@@ -14,10 +14,8 @@ class UI extends React.Component {
         return 'فعالیت های جاری';
       case '/ui/dashboard':
         return 'داشبورد';
-      case '/ui/app-settings':
+      case '/ui/settings':
         return 'تنظیمات برنامه';
-      case '/ui/profile-settings':
-        return 'تنظیمات کاربر';
       default:
         return router.getCurrentPathname();
     }

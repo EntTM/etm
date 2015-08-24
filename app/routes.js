@@ -7,7 +7,6 @@ import Master from './pages/master';
 import Login from './pages/login';
 import Activities from './pages/activities';
 import Dashboard from './pages/dashboard';
-import ProfileSettings from './pages/profile-settings';
 import AppSettings from './pages/app-settings';
 import UI from './pages/ui.js';
 
@@ -17,9 +16,8 @@ var routes = (
   <Route handler={Master} name="root" path="/">
     <Route handler={UI} name="ui">
       <Route handler={Activities} name="activities"/>
-      <Route handler={AppSettings} name="app-settings"/>
       <Route handler={Dashboard} name="dashboard"/>
-      <Route handler={ProfileSettings} name="profile-settings"/>
+      <Route handler={AppSettings} name="settings"/>
     </Route>
 
     <Route handler={Login} name="login"/>
