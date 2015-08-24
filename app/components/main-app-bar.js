@@ -1,9 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import {connect} from 'react-redux';
 import {IconButton, FontIcon} from 'material-ui';
-import {MainAppBarSelector} from '../selectors';
 
 
 
@@ -13,7 +11,7 @@ var styles = {
     height: '10vh',
     backgroundColor: '#998E67',
     display: 'flex',
-    flexFlow: 'row nowrap',
+    flexFlow: 'row-reverse nowrap',
     alignItems: 'center'
   },
   backButton: {
@@ -26,7 +24,7 @@ var styles = {
   miniList: {
     flex: '1 1 auto',
     alignSelf: 'stretch',
-    marginLeft: '5vw',
+    marginRight: '5vw',
     backgroundColor: '#999999'
   },
   menu: {
@@ -37,9 +35,15 @@ var styles = {
 class MainAppBar extends React.Component {
   _backButton(): React.Element {
     return (
-      <div style={styles.backButton}>
+      <div
+        onTouchTap={this.props.onBackTouch}
+        style={{
+          ...styles.backButton,
+          visibility: this.props.onBackTouch ? 'visible' : 'hidden'
+        }}
+      >
         <IconButton iconClassName='material-icons'>
-          arrow_back
+          arrow_forward
         </IconButton>
       </div>
     );
@@ -62,7 +66,10 @@ class MainAppBar extends React.Component {
 
   _menu(): React.Element {
     return (
-      <div style={styles.menu}>
+      <div
+        onTouchTap={this.props.onMenuTouch}
+        style={styles.menu}
+      >
         <IconButton iconClassName='material-icons'>
           more_vert
         </IconButton>
@@ -83,10 +90,10 @@ class MainAppBar extends React.Component {
 }
 
 MainAppBar.propTypes = {
-  loading: React.PropTypes.bool,
-  menu: React.PropTypes.func,
+  onBackTouch: React.PropTypes.func,
+  onMenuTouch: React.PropTypes.func,
   title: React.PropTypes.string
 };
 
 
-export default connect(MainAppBarSelector)(MainAppBar);
+export default MainAppBar;

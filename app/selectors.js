@@ -24,8 +24,3 @@ export var LoginPageSelector = createSelector(
   [loginSelector],
   (login) => {return {loginError: login.loginError}}
 );
-
-export var MainAppBarSelector = createSelector(
-  [globalSelector],
-  (global) => {return {loading: global.loading}}
-);
