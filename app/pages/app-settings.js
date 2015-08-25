@@ -3,6 +3,7 @@
 import React from 'react';
 import {
   Checkbox,
+  IconButton,
   List,
   ListDivider,
   ListItem
@@ -13,7 +14,15 @@ import {
 class AppSettings extends React.Component {
   render(): React.Element {
     return (
-      <div>
+      <div style={{backgroundColor: 'white'}}>
+        <IconButton
+          iconClassName='material-icons'
+          onTouchTap={() => history.back()}
+          style={{direction: 'ltr'}}
+        >
+          close
+        </IconButton>
+
         <List
           subheader='تنظیمات عمومی'
           subheaderStyle={{marginRight: '16px'}}

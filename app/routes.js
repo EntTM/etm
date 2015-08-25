@@ -15,10 +15,10 @@ var routes = (
   <Route handler={Master} name="root" path="/">
     <Route handler={UI} name="ui">
       <Route handler={Projects} name="project"/>
-      <Route handler={AppSettings} name="settings"/>
     </Route>
 
     <Route handler={Login} name="login"/>
+    <Route handler={AppSettings} name="settings"/>
 
     {localStorage.loggedIn ?
       <Redirect to='activities'/> :
