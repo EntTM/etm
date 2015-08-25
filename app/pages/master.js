@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Router from 'react-router';
-import AppLeftNav from '../components/app-left-nav';
 import {Styles} from 'material-ui';
 import background from '../../images/background@blurred.jpg';
 
@@ -38,9 +37,7 @@ class Master extends React.Component {
           }}
         />
 
-        <AppLeftNav ref='leftNav'/>
-
-        <RouteHandler menu={() => this.refs.leftNav.toggle()}/>
+        <RouteHandler/>
       </div>
     );
   }

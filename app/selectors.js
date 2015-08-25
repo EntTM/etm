@@ -57,3 +57,8 @@ export var LoginPageSelector = createSelector(
   [loginSelector],
   (login) => {return {loginError: login.loginError}}
 );
+
+export var UIPageSelector = createSelector(
+  [],
+  () => {return {}}
+);
