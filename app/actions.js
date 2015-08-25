@@ -10,6 +10,7 @@ export var LOGIN_ACTION = 'LOGIN_ACTION';
 export var LOADING_ACTION = 'LOADING_ACTION';
 export var FETCH_ALL_DATA_ACTION = 'FETCH_ALL_DATA_ACTION';
 export var GOTO_SETTINGS_ACTION = 'GOTO_SETTINGS_ACTION';
+export var SELECT_PROJECT_ACTION = 'SELECT_PROJECT_ACTION';
 
 
 
@@ -52,5 +53,12 @@ export function gotoSettingsAction(): Action {
   router.transitionTo('settings');
   return {
     type: GOTO_SETTINGS_ACTION
+  };
+}
+
+export function selectProjectAction(projId: string|number): Action {
+  return {
+    type: SELECT_PROJECT_ACTION,
+    projId
   };
 }

@@ -4,7 +4,8 @@ import type {Action} from './actions';
 import {
   LOADING_ACTION,
   LOGIN_ACTION,
-  FETCH_ALL_DATA_ACTION
+  FETCH_ALL_DATA_ACTION,
+  SELECT_PROJECT_ACTION
 } from './actions';
 import {Styles} from 'material-ui';
 
@@ -104,6 +105,7 @@ export function projects(state: any, action: Action): any {
       if (typeof state === 'array') {
         return [...state, action.projects];
       }
+      break;
     default:
       return state;
   }
@@ -118,6 +120,8 @@ export function global(state: any, action: Action): any {
   switch(action.type){
     case LOADING_ACTION:
       return {...state, loading: action.loading};
+    case SELECT_PROJECT_ACTION:
+      return {...state, currentProjectId: action.projId};
     default:
       return state;
   }

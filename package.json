@@ -48,6 +48,8 @@
   },
   "dependencies": {
     "babel-runtime": "^5.8.5",
+    "debounce": "^1.0.0",
+    "hammerjs": "^2.0.4",
     "material-ui": "^0.10.4",
     "react": "^0.13.3",
     "react-d3-components": "^0.4.8",

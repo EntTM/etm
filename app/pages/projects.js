@@ -3,12 +3,14 @@
 import React from 'react';
 import {Snackbar, Styles} from 'material-ui';
 import {connect} from 'react-redux';
+import Hammer from 'hammerjs';
+import debounce from 'debounce';
 import Filters from '../components/filters';
 import TaskList from '../components/task-list';
 import {ProjectsPageSelector} from '../selectors';
 import ProjectDashboard from '../components/project-dashboard';
 import MainAppBar from '../components/main-app-bar';
-import {gotoSettingsAction} from '../actions';
+import {gotoSettingsAction, selectProjectAction} from '../actions';
 
 
 
@@ -22,12 +24,33 @@ class Projects extends React.Component {
     this._handleJobDone = this._handleJobDone.bind(this);
     this._handleSnackbarAction = this._handleSnackbarAction.bind(this);
     this._handleMenuTouch = this._handleMenuTouch.bind(this);
+    this._prevProject = debounce(this._prevProject.bind(this), 500, true);
+    this._nextProject = debounce(this._nextProject.bind(this), 500, true);
   }
 
   getChildContext(): Object {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
+  }
+
+  componentDidMount(): void {
+    var div = React.findDOMNode(this.refs.body);
+    this.mc = new Hammer.Manager(div, {recognizers: [[Hammer.Pan, {direction: Hammer.DIRECTION_HORIZONTAL}]]});
+    this.mc.on('panleft', this._prevProject);
+    this.mc.on('panright', this._nextProject);
+  }
+
+  _nextProject(): void {
+    if (this.nextPrj !== null) {
+      this.props.dispatch(selectProjectAction(this.nextPrj));
+    }
+  }
+
+  _prevProject(): void {
+    if (this.prevPrj !== null) {
+      this.props.dispatch(selectProjectAction(this.prevPrj));
+    }
   }
 
   _handleJobDone(): void {
@@ -55,10 +78,27 @@ class Projects extends React.Component {
   }
 
   render(): React.Element {
-    var currentProject = this.props.projects.filter(p => p.id === this.props.currentProjectId)[0];
+    var projIds = this.props.projects.map(p => p.id);
+    var idx = projIds.indexOf(this.props.currentProjectId);
+
+    var currentProject = this.props.projects[idx];
+
+    if (idx > 0) {
+      this.prevPrj = projIds[idx - 1];
+    }
+    else {
+      this.prevPrj = null;
+    }
+
+    if (idx < (projIds.length - 1)) {
+      this.nextPrj = projIds[idx + 1];
+    }
+    else {
+      this.nextPrj = null;
+    }
 
     return (
-      <div>
+      <div ref='body'>
         <Filters
           onCurrentTasks={this._filterCurrentTasks}
           onFutureTasks={this._filterFutureTasks}
