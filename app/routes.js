@@ -6,7 +6,6 @@ import NotFound from './pages/not-found';
 import Master from './pages/master';
 import Login from './pages/login';
 import Projects from './pages/projects';
-import Dashboard from './pages/dashboard';
 import AppSettings from './pages/app-settings';
 import UI from './pages/ui.js';
 
@@ -16,7 +15,6 @@ var routes = (
   <Route handler={Master} name="root" path="/">
     <Route handler={UI} name="ui">
       <Route handler={Projects} name="project"/>
-      <Route handler={Dashboard} name="dashboard"/>
       <Route handler={AppSettings} name="settings"/>
     </Route>
 

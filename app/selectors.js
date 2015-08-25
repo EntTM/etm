@@ -34,23 +34,20 @@ var groupedTasksSelector = createSelector(
 );
 
 var currentProjectIdSelector = createSelector(
-  [globalSelector, groupedTasksSelector],
-  (global, tasks) => (global.currentProjectId || Object.keys(tasks)[0])
+  [globalSelector, projectsSelector],
+  (global, projects) => (global.currentProjectId || projects[0].id)
 );
 
 
 // Page Selectors
 
 export var ProjectsPageSelector = createSelector(
-  [groupedTasksSelector, currentProjectIdSelector],
-  (tasks, currentProjectId) => {
-    return {tasks, currentProjectId};
+  [projectsSelector, groupedTasksSelector, currentProjectIdSelector],
+  (projects, tasks, currentProjectId) => {
+    return {
+      currentProjectId,
+      projects: projects.map(p => ({...p, tasks: tasks[p.id]}))};
   }
-);
-
-export var DashboardPageSelector = createSelector(
-  [projectsSelector],
-  (projects) => {return {projects}}
 );
 
 export var LoginPageSelector = createSelector(

@@ -14,7 +14,7 @@ import {
 
 class Task extends React.Component {
   render(): React.Element {
-    var {title, projectId, remaining, details} = this.props.task;
+    var {title, remaining, details} = this.props.task;
 
     var avatar = (
       <FontIcon
@@ -31,7 +31,6 @@ class Task extends React.Component {
           avatar={avatar}
           showExpandableButton={true}
           style={{paddingRight: '40px'}}
-          subtitle={projectId}
           title={title}/>
 
         <CardText expandable={true}>

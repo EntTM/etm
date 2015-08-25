@@ -13,28 +13,28 @@ import {Styles} from 'material-ui';
 var initialTasks = [
   {
     id: 1,
-    projectId: 'پروژه‌ی ایکس',
+    projectId: 1,
     remaining: '14 روز و 21 ساعت',
     details: 'بهبود عملکرد ماژول ایگرگ در صفحه‌ی زد',
     title: 'فعالیت اول'
   },
   {
     id: 2,
-    projectId: 'پروژه‌ی ایکس',
+    projectId: 1,
     remaining: '2 روز و 4 ساعت',
     details: 'رفع مشکل شماره 541 در صفحه‌ی دوم سایت',
     title: 'فعالیت دوم'
   },
   {
     id: 3,
-    projectId: 'پروژه‌ی شرکت دبلیو',
+    projectId: 2,
     remaining: '7 روز و 1 ساعت',
     details: 'توسعه‌ی ماژول دلتا',
     title: 'فعالیت سوم'
   },
   {
     id: 4,
-    projectId: 'پروژه‌ی شرکت دبلیو',
+    projectId: 2,
     remaining: '21 روز و 12 ساعت',
     details: 'ساخت صفحات مربوط به ماژول تتا',
     title: 'فعالیت چهارم'
@@ -91,16 +91,7 @@ var projects = [
     projectStatus: 45,
     projectTime: 52,
     title: 'پروژه‌ی شرکت دبلیو'
-  },
-  {
-    id: 3,
-    color: Colors.green500,
-    barData,
-    areaData,
-    projectStatus: 70,
-    projectTime: 62,
-    title: 'پروژه‌ی شرکت زد'
-  },
+  }
 ];
 
 export function projects(state: any, action: Action): any {

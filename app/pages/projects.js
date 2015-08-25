@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Filters from '../components/filters';
 import TaskList from '../components/task-list';
 import {ProjectsPageSelector} from '../selectors';
+import ProjectDashboard from '../components/project-dashboard';
 
 
 
@@ -47,6 +48,8 @@ class Projects extends React.Component {
   }
 
   render(): React.Element {
+    var currentProject = this.props.projects.filter(p => p.id === this.props.currentProjectId)[0];
+
     return (
       <div>
         <Filters
@@ -64,9 +67,14 @@ class Projects extends React.Component {
           style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}
         />
 
+        <ProjectDashboard
+          project={currentProject}
+          style={{marginBottom: '0.5vh'}}
+        />
+
         <TaskList
           onJobFinish={(j) => this._handleJobDone()}
-          tasks={this.props.tasks[this.props.currentProjectId]}
+          tasks={currentProject.tasks}
         />
       </div>
     );
@@ -80,7 +88,7 @@ Projects.childContextTypes = {
 Projects.propTypes = {
   currentProjectId: React.PropTypes.number,
   dispatch: React.PropTypes.func,
-  tasks: React.PropTypes.object
+  projects: React.PropTypes.array
 };
 
 
