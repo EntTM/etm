@@ -60,7 +60,7 @@ class MainAppBar extends React.Component {
 
   render(): React.Element {
     return (
-      <div style={styles.container}>
+      <div style={{...styles.container, backgroundColor: this.props.color}}>
         {this._projTitle()}
         {this._miniList()}
         {this._menu()}
@@ -70,6 +70,7 @@ class MainAppBar extends React.Component {
 }
 
 MainAppBar.propTypes = {
+  color: React.PropTypes.string,
   onMenuTouch: React.PropTypes.func,
   title: React.PropTypes.string
 };

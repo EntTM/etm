@@ -74,7 +74,7 @@ class Projects extends React.Component {
           style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}
         />
 
-        <MainAppBar onMenuTouch={this._handleMenuTouch} title={currentProject.title}/>
+        <MainAppBar color={currentProject.color} onMenuTouch={this._handleMenuTouch} title={currentProject.title}/>
 
         <ProjectDashboard
           project={currentProject}
