@@ -10,7 +10,7 @@ import router from '../router';
 class UI extends React.Component {
   _title() {
     switch (router.getCurrentPathname()) {
-      case '/ui/activities':
+      case '/ui/project':
         return 'فعالیت های جاری';
       case '/ui/dashboard':
         return 'داشبورد';

@@ -11,7 +11,7 @@ var {Colors, Spacing, Typography} = Styles;
 
 var menuItems = [
   {type: MenuItem.Types.SUBHEADER, text: 'فعالیت‌ها'},
-  {route: 'activities', text: 'فعالیت‌ها'},
+  {route: 'project', text: 'فعالیت‌ها'},
   {route: 'dashboard', text: 'داشبورد'},
   {type: MenuItem.Types.SUBHEADER, text: 'تنظیمات'},
   {route: 'settings', text: 'تنظیمات برنامه'},

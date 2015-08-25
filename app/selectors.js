@@ -4,13 +4,17 @@ import {createSelector} from 'reselect';
 
 
 
+// Scope Selectors
+
 var tasksSelector = s => s.tasks;
 var projectsSelector = s => s.projects;
 var globalSelector = s => s.global;
 var loginSelector = s => s.login;
 
 
-export var ActivitiesPageSelector = createSelector(
+// Computed Selectors
+
+var groupedTasksSelector = createSelector(
   [tasksSelector],
   (tasksList) => {
     var tasks = {};
@@ -25,7 +29,22 @@ export var ActivitiesPageSelector = createSelector(
       }
     }
 
-    return {tasks};
+    return tasks;
+  }
+);
+
+var currentProjectIdSelector = createSelector(
+  [globalSelector, groupedTasksSelector],
+  (global, tasks) => (global.currentProjectId || Object.keys(tasks)[0])
+);
+
+
+// Page Selectors
+
+export var ProjectsPageSelector = createSelector(
+  [groupedTasksSelector, currentProjectIdSelector],
+  (tasks, currentProjectId) => {
+    return {tasks, currentProjectId};
   }
 );
 

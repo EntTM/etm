@@ -5,7 +5,7 @@ import {Snackbar, Styles} from 'material-ui';
 import {connect} from 'react-redux';
 import Filters from '../components/filters';
 import TaskList from '../components/task-list';
-import {ActivitiesPageSelector} from '../selectors';
+import {ProjectsPageSelector} from '../selectors';
 
 
 
@@ -13,11 +13,11 @@ var ThemeManager = new Styles.ThemeManager();
 var {Colors} = Styles;
 
 
-class Activities extends React.Component {
+class Projects extends React.Component {
   constructor(props: Object) {
-    super(props)
-    this._handleJobDone = this._handleJobDone.bind(this)
-    this._handleSnackbarAction = this._handleSnackbarAction.bind(this)
+    super(props);
+    this._handleJobDone = this._handleJobDone.bind(this);
+    this._handleSnackbarAction = this._handleSnackbarAction.bind(this);
   }
 
   getChildContext(): Object {
@@ -47,24 +47,13 @@ class Activities extends React.Component {
   }
 
   render(): React.Element {
-    var taskList = [];
-
-    for (var projectId of Object.keys(this.props.tasks)) {
-      taskList.push(
-        <TaskList
-          key={projectId}
-          onJobFinish={(j) => this._handleJobDone()}
-          tasks={this.props.tasks[projectId]}
-        />
-      );
-    }
-
     return (
       <div>
         <Filters
           onCurrentTasks={this._filterCurrentTasks}
           onFutureTasks={this._filterFutureTasks}
-          onPastTasks={this._filterPastTasks}/>
+          onPastTasks={this._filterPastTasks}
+        />
 
         <Snackbar
           action="لغو"
@@ -72,22 +61,27 @@ class Activities extends React.Component {
           message="فعالیت مورد نظر تمام شد"
           onActionTouchTap={this._handleSnackbarAction}
           ref="snackbar"
-          style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}/>
+          style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}
+        />
 
-        {taskList}
+        <TaskList
+          onJobFinish={(j) => this._handleJobDone()}
+          tasks={this.props.tasks[this.props.currentProjectId]}
+        />
       </div>
     );
   }
 }
 
-Activities.childContextTypes = {
+Projects.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
 
-Activities.propTypes = {
+Projects.propTypes = {
+  currentProjectId: React.PropTypes.number,
   dispatch: React.PropTypes.func,
   tasks: React.PropTypes.object
 };
 
 
-export default connect(ActivitiesPageSelector)(Activities);
+export default connect(ProjectsPageSelector)(Projects);
