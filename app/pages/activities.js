@@ -47,6 +47,18 @@ class Activities extends React.Component {
   }
 
   render(): React.Element {
+    var taskList = [];
+
+    for (var projectId of Object.keys(this.props.tasks)) {
+      taskList.push(
+        <TaskList
+          key={projectId}
+          onJobFinish={(j) => this._handleJobDone()}
+          tasks={this.props.tasks[projectId]}
+        />
+      );
+    }
+
     return (
       <div>
         <Filters
@@ -62,9 +74,7 @@ class Activities extends React.Component {
           ref="snackbar"
           style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}/>
 
-        <TaskList
-          onJobFinish={(j) => this._handleJobDone()}
-          tasks={this.props.tasks}/>
+        {taskList}
       </div>
     );
   }
@@ -76,7 +86,7 @@ Activities.childContextTypes = {
 
 Activities.propTypes = {
   dispatch: React.PropTypes.func,
-  tasks: React.PropTypes.array
+  tasks: React.PropTypes.object
 };
 
 

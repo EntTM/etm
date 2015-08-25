@@ -12,7 +12,21 @@ var loginSelector = s => s.login;
 
 export var ActivitiesPageSelector = createSelector(
   [tasksSelector],
-  (tasks) => {return {tasks}}
+  (tasksList) => {
+    var tasks = {};
+
+    for (var task of tasksList) {
+      var tl = tasks[task.projectId];
+      if (tl instanceof Array) {
+        tl.push(task);
+      }
+      else {
+        tasks[task.projectId] = [task];
+      }
+    }
+
+    return {tasks};
+  }
 );
 
 export var DashboardPageSelector = createSelector(
