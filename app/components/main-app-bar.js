@@ -14,17 +14,14 @@ var styles = {
     flexFlow: 'row-reverse nowrap',
     alignItems: 'center'
   },
-  backButton: {
-    flex: 'none'
-  },
   projTitle: {
     flex: 'none',
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    margin: '0 5vw'
   },
   miniList: {
     flex: '1 1 auto',
     alignSelf: 'stretch',
-    marginRight: '5vw',
     backgroundColor: '#999999'
   },
   menu: {
@@ -33,22 +30,6 @@ var styles = {
 };
 
 class MainAppBar extends React.Component {
-  _backButton(): React.Element {
-    return (
-      <div
-        onTouchTap={this.props.onBackTouch}
-        style={{
-          ...styles.backButton,
-          visibility: this.props.onBackTouch ? 'visible' : 'hidden'
-        }}
-      >
-        <IconButton iconClassName='material-icons'>
-          arrow_forward
-        </IconButton>
-      </div>
-    );
-  }
-
   _projTitle(): React.Element {
     return (
       <h1 style={styles.projTitle}>
@@ -80,7 +61,6 @@ class MainAppBar extends React.Component {
   render(): React.Element {
     return (
       <div style={styles.container}>
-        {this._backButton()}
         {this._projTitle()}
         {this._miniList()}
         {this._menu()}
@@ -90,7 +70,6 @@ class MainAppBar extends React.Component {
 }
 
 MainAppBar.propTypes = {
-  onBackTouch: React.PropTypes.func,
   onMenuTouch: React.PropTypes.func,
   title: React.PropTypes.string
 };

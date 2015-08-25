@@ -7,6 +7,8 @@ import Filters from '../components/filters';
 import TaskList from '../components/task-list';
 import {ProjectsPageSelector} from '../selectors';
 import ProjectDashboard from '../components/project-dashboard';
+import MainAppBar from '../components/main-app-bar';
+import {gotoSettingsAction} from '../actions';
 
 
 
@@ -19,6 +21,7 @@ class Projects extends React.Component {
     super(props);
     this._handleJobDone = this._handleJobDone.bind(this);
     this._handleSnackbarAction = this._handleSnackbarAction.bind(this);
+    this._handleMenuTouch = this._handleMenuTouch.bind(this);
   }
 
   getChildContext(): Object {
@@ -47,6 +50,10 @@ class Projects extends React.Component {
     console.log('Filter tasks and show just future Tasks');
   }
 
+  _handleMenuTouch(): void {
+    this.props.dispatch(gotoSettingsAction());
+  }
+
   render(): React.Element {
     var currentProject = this.props.projects.filter(p => p.id === this.props.currentProjectId)[0];
 
@@ -66,6 +73,8 @@ class Projects extends React.Component {
           ref="snackbar"
           style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}
         />
+
+        <MainAppBar onMenuTouch={this._handleMenuTouch} title={currentProject.title}/>
 
         <ProjectDashboard
           project={currentProject}
