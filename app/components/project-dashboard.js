@@ -15,6 +15,7 @@ var styles = {
   main: {
     display: 'flex',
     flexFlow: 'row wrap',
+    marginTop: '10vh',
     marginBottom: '0.5vh'
   },
   section: {

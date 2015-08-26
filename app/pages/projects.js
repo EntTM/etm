@@ -97,6 +97,8 @@ class Projects extends React.Component {
       this.nextPrj = null;
     }
 
+    var projTaskCounts = this.props.projects.map(p => p.tasks.length);
+
     return (
       <div ref='body'>
         <Filters
@@ -114,11 +116,16 @@ class Projects extends React.Component {
           style={{minWidth: '100px', paddingRight: '0', paddingLeft: '12px'}}
         />
 
-        <MainAppBar color={currentProject.color} onMenuTouch={this._handleMenuTouch} title={currentProject.title}/>
+        <MainAppBar
+          color={currentProject.color}
+          currentProjectIndex={idx}
+          onMenuTouch={this._handleMenuTouch}
+          projectHeights={projTaskCounts}
+          title={currentProject.title}
+        />
 
         <ProjectDashboard
           project={currentProject}
-          style={{marginBottom: '0.5vh'}}
         />
 
         <TaskList

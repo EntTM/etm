@@ -8,7 +8,12 @@ import {IconButton, FontIcon} from 'material-ui';
 var styles = {
   container: {
     direction: 'ltr',
+    position: 'fixed',
+    width: '100%',
     height: '10vh',
+    top: 0,
+    left: 0,
+    zIndex: 1000,
     backgroundColor: '#998E67',
     display: 'flex',
     flexFlow: 'row-reverse nowrap',
@@ -22,7 +27,13 @@ var styles = {
   miniList: {
     flex: '1 1 auto',
     alignSelf: 'stretch',
-    backgroundColor: '#999999'
+    height: '100%'
+  },
+  miniListItem: {
+    display: 'inline-block',
+    width: '5vw',
+    margin: '1vh 1.5vw',
+    borderRadius: 5
   },
   menu: {
     flex: 'none'
@@ -39,8 +50,22 @@ class MainAppBar extends React.Component {
   }
 
   _miniList(): React.Element {
+    var max = Math.max.apply(null, this.props.projectHeights);
+    var list = this.props.projectHeights.map(h => h / max)
+      .map((h, i) =>
+           <div
+             key={i}
+             style={{
+               ...styles.miniListItem,
+               height: `calc(${h} * 8vh)`,
+               backgroundColor: (i === this.props.currentProjectIndex ? '#ccc' : '#999')
+             }}
+           />
+          );
+
     return (
       <div style={styles.miniList}>
+        {list}
       </div>
     );
   }
@@ -71,7 +96,9 @@ class MainAppBar extends React.Component {
 
 MainAppBar.propTypes = {
   color: React.PropTypes.string,
+  currentProjectIndex: React.PropTypes.number,
   onMenuTouch: React.PropTypes.func,
+  projectHeights: React.PropTypes.arrayOf(React.PropTypes.number),
   title: React.PropTypes.string
 };
 
