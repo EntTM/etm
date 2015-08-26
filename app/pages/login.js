@@ -19,6 +19,44 @@ import back from '../../images/back.png';
 
 var ThemeManager = new Styles.ThemeManager();
 
+var styles = {
+  containerStyle: {
+    width: '85%',
+    margin: 'auto',
+    marginTop: 80
+  },
+  textfield: {
+    display: 'box',
+    margin: 'auto'
+  },
+  button: {
+    direction: 'ltr',
+    position: 'absolute',
+    left: -28,
+    display: 'block',
+    width: 56,
+    textAlign: 'center'
+  },
+  firstButton: {
+    direction: 'ltr',
+    position: 'absolute',
+    left: '50%',
+    top: '55vh',
+    marginLeft: -28
+  },
+  avatar: {
+    position: 'absolute',
+    direction: 'ltr',
+    top: 250,
+    right: 60
+  },
+  signupWrapper: {
+    position: 'relative',
+    height: 26,
+    left: '50%'
+  }
+};
+
 class Login extends React.Component {
   constructor(props: Object) {
     super(props);
@@ -30,48 +68,6 @@ class Login extends React.Component {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
-  }
-
-  getStyles(): Object {
-    var styles = {
-      containerStyle: {
-        width: '85%',
-        margin: 'auto',
-        marginTop: 80
-      },
-      textfield: {
-        display: 'box',
-        margin: 'auto'
-      },
-      button: {
-        direction: 'ltr',
-        position: 'absolute',
-        left: -28,
-        display: 'block',
-        width: 56,
-        textAlign: 'center'
-      },
-      firstButton: {
-        direction: 'ltr',
-        position: 'absolute',
-        left: '50%',
-        top: 400,
-        marginLeft: -28
-      },
-      avatar: {
-        position: 'absolute',
-        direction: 'ltr',
-        top: 250,
-        right: 60
-      },
-      signupWrapper: {
-        position: 'relative',
-        height: 26,
-        left: '50%'
-      }
-    };
-
-    return styles;
   }
 
   _handleSignUpTap(): void {
@@ -89,8 +85,6 @@ class Login extends React.Component {
   }
 
   render(): React.Element {
-    var styles = this.getStyles();
-
     var signupButton = (<RefreshIndicator left={-28} size={56} status="loading" top={0}/>);
 
     if (this.state.kind !== 'loading') {
