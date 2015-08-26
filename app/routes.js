@@ -17,7 +17,7 @@ var routes = (
     <Route handler={AppSettings} name="settings"/>
 
     {localStorage.loggedIn ?
-      <Redirect to='activities'/> :
+      <Redirect to='project'/> :
       <Redirect to='login'/>}
 
     <NotFoundRoute handler={NotFound}/>
