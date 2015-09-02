@@ -40,20 +40,27 @@ class ExpandableButton extends React.Component {
       fontSize: `calc(${this.props.initialSize} * 0.45)`
     };
 
-    return (
-      <Paper
-        onTouchTap={this.props.onTouchTap}
-        style={containerStyle}
-        zDepth={2}
-      >
-        <i className='material-icons' style={iconStyle}>{this.props.materialIcon}</i>
-      </Paper>
-    );
+    if (this.props.expand) {
+      return <div>{this.props.children}</div>;
+    }
+    else {
+      return (
+        <Paper
+          onTouchTap={this.props.onTouchTap}
+          style={containerStyle}
+          zDepth={2}
+        >
+          <i className='material-icons' style={iconStyle}>{this.props.materialIcon}</i>
+        </Paper>
+      );
+    }
   }
 }
 
 ExpandableButton.propTypes = {
+  children: React.PropTypes.node,
   color: React.PropTypes.string,
+  expand: React.PropTypes.bool,
   initialSize: React.PropTypes.string,
   materialIcon: React.PropTypes.string,
   onTouchTap: React.PropTypes.func,

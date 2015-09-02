@@ -69,18 +69,18 @@ class Login extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.loginError && !!nextProps.loginError) {
+      this.setState({kind: 'failed'});
+    }
+  }
+
   _handleSignUpTap(): void {
     this.setState({kind: 'loading'});
     this.props.dispatch(loadingAction(true));
     var usr = this.refs.username.getValue();
     var pw  = this.refs.password.getValue();
     this.props.dispatch(loginAction(usr, pw));
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.loginError && !!nextProps.loginError) {
-      this.setState({kind: 'failed'});
-    }
   }
 
   render(): React.Element {
@@ -129,24 +129,18 @@ class Login extends React.Component {
       </Paper>
     );
 
-    var enterButton = (
+    return (
       <ExpandableButton
         color='red'
+        expand={this.state.kind !== 'button'}
         initialSize='13.53vw'
         materialIcon='arrow_forward'
         onTouchTap={() => this.setState({kind: 'login'})}
         style={styles.expandableButton}
-      />
+      >
+        {loginDialog}
+      </ExpandableButton>
     );
-
-    switch (this.state.kind) {
-      case 'login':
-      case 'failed':
-      case 'loading':
-        return loginDialog;
-      case 'button':
-        return enterButton;
-    }
   }
 }
 
@@ -155,7 +149,8 @@ Login.childContextTypes = {
 };
 
 Login.propTypes = {
-  dispatch: React.PropTypes.func
+  dispatch: React.PropTypes.func,
+  loginError: React.PropTypes.bool
 };
 
 
