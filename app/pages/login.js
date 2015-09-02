@@ -1,6 +1,7 @@
 /* @flow */
 
 import React from 'react';
+import {connect} from 'react-redux';
 import {
   Avatar,
   Paper,
@@ -10,7 +11,7 @@ import {
   Styles,
   TextField
 } from 'material-ui';
-import {connect} from 'react-redux';
+import ExpandableButton from '../components/expandable-button';
 import {loginAction, loadingAction} from '../actions';
 import {LoginPageSelector} from '../selectors';
 import back from '../../images/back.png';
@@ -36,13 +37,6 @@ var styles = {
     display: 'block',
     width: 56,
     textAlign: 'center'
-  },
-  firstButton: {
-    direction: 'ltr',
-    position: 'absolute',
-    left: '50%',
-    top: '55vh',
-    marginLeft: -28
   },
   avatar: {
     position: 'absolute',
@@ -131,11 +125,10 @@ class Login extends React.Component {
     );
 
     var enterButton = (
-      <FloatingActionButton
+      <ExpandableButton
+        color='red'
         onTouchTap={() => this.setState({kind: 'login'})}
-        style={styles.firstButton}>
-        <FontIcon className='material-icons'>arrow_forward</FontIcon>
-      </FloatingActionButton>
+      />
     );
 
     switch (this.state.kind) {
