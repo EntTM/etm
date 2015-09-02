@@ -10,17 +10,18 @@ var styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '15vw',
-    width: '15vw',
+    height: '13.53vw',
+    width: '13.53vw',
     overflow: 'hidden',
     direction: 'ltr',
     position: 'absolute',
     left: '50%',
     top: '55vh',
-    marginLeft: '-7.5vw'
+    borderRadius: '50%',
+    marginLeft: '-6.765vw'
   },
   icon: {
-    fontSize: '7.5vw'
+    fontSize: '6vw'
   }
 };
 
@@ -34,7 +35,6 @@ class ExpandableButton extends React.Component {
   render(): React.Element {
     return (
       <Paper
-        circle={true}
         onTouchTap={this.props.onTouchTap}
         style={{...styles.button, backgroundColor: this.props.color}}
         zDepth={2}
