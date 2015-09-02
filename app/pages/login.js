@@ -2,23 +2,14 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-  Avatar,
-  Paper,
-  FloatingActionButton,
-  FontIcon,
-  RefreshIndicator,
-  Styles,
-  TextField
-} from 'material-ui';
+import {Avatar, TextField} from 'material-ui';
 import ExpandableButton from '../components/expandable-button';
+import ThreeButton from '../components/three-button';
 import {loginAction, loadingAction} from '../actions';
 import {LoginPageSelector} from '../selectors';
 import back from '../../images/back.png';
 
 
-
-var ThemeManager = new Styles.ThemeManager();
 
 var styles = {
   expandableButton: {
@@ -32,13 +23,9 @@ var styles = {
     display: 'box',
     margin: 'auto'
   },
-  button: {
-    direction: 'ltr',
+  threeButton: {
     position: 'absolute',
-    left: -28,
-    display: 'block',
-    width: 56,
-    textAlign: 'center'
+    left: -28
   },
   avatar: {
     position: 'absolute',
@@ -60,12 +47,6 @@ class Login extends React.Component {
     this._handleSignUpTap = this._handleSignUpTap.bind(this);
   }
 
-  getChildContext(): Object {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  }
-
   componentWillReceiveProps(nextProps) {
     if (!this.props.loginError && !!nextProps.loginError) {
       this.setState({kind: 'failed'});
@@ -81,20 +62,22 @@ class Login extends React.Component {
   }
 
   render(): React.Element {
-    var signupButton = (<RefreshIndicator left={-28} size={56} status="loading" top={0}/>);
-
-    if (this.state.kind !== 'loading') {
-      signupButton = (
-        <FloatingActionButton
-          backgroundColor={this.state.kind === 'failed' ? 'red' : 'blue'}
-          circle={true}
-          onTouchTap={this._handleSignUpTap}
-          style={styles.button}
-        >
-          <FontIcon className='material-icons'>{this.state.kind === 'login' ? 'vpn_key' : 'warning'}</FontIcon>
-        </FloatingActionButton>
-      );
-    }
+    var signupButton = (
+      <ThreeButton
+        firstColor='blue'
+        firstIcon='vpn_key'
+        onTouchTap={this._handleSignUpTap}
+        secondColor='red'
+        secondIcon='warning'
+        size='56px'
+        state={
+          this.state.kind === 'loading' ? 'loading'
+            : this.state.kind === 'failed'  ? 'second'
+              : 'first'
+        }
+        style={styles.threeButton}
+      />
+    );
 
     return (
       <ExpandableButton
@@ -118,7 +101,7 @@ class Login extends React.Component {
           />
 
           <Avatar size={50} style={styles.avatar}>
-            <FontIcon className='material-icons'>person</FontIcon>
+            <i className='material-icons'>person</i>
           </Avatar>
 
           <TextField
