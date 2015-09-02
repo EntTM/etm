@@ -21,15 +21,12 @@ import back from '../../images/back.png';
 var ThemeManager = new Styles.ThemeManager();
 
 var styles = {
-  containerStyle: {
-    width: '85%',
-    margin: 'auto',
-    marginTop: 80
-  },
   expandableButton: {
     position: 'absolute',
-    left: '50%',
-    top: '55vh'
+    left: '50%'
+  },
+  dialogContainer: {
+    direction: 'rtl'
   },
   textfield: {
     display: 'box',
@@ -99,49 +96,48 @@ class Login extends React.Component {
       );
     }
 
-    var loginDialog = (
-      <Paper rounded={true} style={styles.containerStyle}>
-        <img
-          src={back}
-          style={{width: '100%', height: 200}}
-        />
-
-        <Avatar size={50} style={styles.avatar}>
-          <FontIcon className='material-icons'>person</FontIcon>
-        </Avatar>
-
-        <TextField
-          floatingLabelText='نام کاربری'
-          hintText='نام کاربری باید یکتا باشد'
-          ref="username"
-          style={styles.textfield}
-        />
-
-        <TextField
-          floatingLabelText='رمز عبور'
-          hintText='حداقل 8 کاراکتر'
-          ref="password"
-          style={styles.textfield}
-          type='password'
-        />
-
-        <div style={styles.signupWrapper}>{signupButton}</div>
-      </Paper>
-    );
-
     return (
       <ExpandableButton
-        color='red'
+        color={this.state.kind !== 'button' ? 'white' : 'red'}
         expand={this.state.kind !== 'button'}
+        expandedHeight='115vw'
+        expandedWidth='85vw'
         initialSize='13.53vw'
         materialIcon='arrow_forward'
         onTouchTap={() => this.setState({kind: 'login'})}
         style={{
           ...styles.expandableButton,
-          marginLeft: `${-13.53 / 2}vw`
+          top: (this.state.kind !== 'button' ? '10vh' : '55vh'),
+          marginLeft: (this.state.kind !== 'button' ? '-42.5vw' : '-6.765vw')
         }}
       >
-        {loginDialog}
+        <div style={styles.dialogContainer}>
+          <img
+            src={back}
+            style={{width: '100%', height: 200}}
+          />
+
+          <Avatar size={50} style={styles.avatar}>
+            <FontIcon className='material-icons'>person</FontIcon>
+          </Avatar>
+
+          <TextField
+            floatingLabelText='نام کاربری'
+            hintText='نام کاربری باید یکتا باشد'
+            ref="username"
+            style={styles.textfield}
+          />
+
+          <TextField
+            floatingLabelText='رمز عبور'
+            hintText='حداقل 8 کاراکتر'
+            ref="password"
+            style={styles.textfield}
+            type='password'
+          />
+
+          <div style={styles.signupWrapper}>{signupButton}</div>
+        </div>
       </ExpandableButton>
     );
   }
