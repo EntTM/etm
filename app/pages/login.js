@@ -26,6 +26,11 @@ var styles = {
     margin: 'auto',
     marginTop: 80
   },
+  expandableButton: {
+    position: 'absolute',
+    left: '50%',
+    top: '55vh'
+  },
   textfield: {
     display: 'box',
     margin: 'auto'
@@ -127,7 +132,10 @@ class Login extends React.Component {
     var enterButton = (
       <ExpandableButton
         color='red'
+        initialSize='13.53vw'
+        materialIcon='arrow_forward'
         onTouchTap={() => this.setState({kind: 'login'})}
+        style={styles.expandableButton}
       />
     );
 

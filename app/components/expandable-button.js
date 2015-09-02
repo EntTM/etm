@@ -10,18 +10,11 @@ var styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '13.53vw',
-    width: '13.53vw',
     overflow: 'hidden',
     direction: 'ltr',
-    position: 'absolute',
-    left: '50%',
-    top: '55vh',
-    borderRadius: '50%',
-    marginLeft: '-6.765vw'
+    borderRadius: '50%'
   },
   icon: {
-    fontSize: '6vw'
   }
 };
 
@@ -33,13 +26,27 @@ class ExpandableButton extends React.Component {
   }
 
   render(): React.Element {
+    var containerStyle = {
+      ...styles.button,
+      backgroundColor: this.props.color,
+      width: this.props.initialSize,
+      height: this.props.initialSize,
+      marginLeft: `calc(-1 * ${this.props.initialSize} / 2)`,
+      ...this.props.style
+    };
+
+    var iconStyle = {
+      ...styles.icon,
+      fontSize: `calc(${this.props.initialSize} * 0.45)`
+    };
+
     return (
       <Paper
         onTouchTap={this.props.onTouchTap}
-        style={{...styles.button, backgroundColor: this.props.color}}
+        style={containerStyle}
         zDepth={2}
       >
-        <i className='material-icons' style={styles.icon}>arrow_forward</i>
+        <i className='material-icons' style={iconStyle}>{this.props.materialIcon}</i>
       </Paper>
     );
   }
@@ -47,7 +54,10 @@ class ExpandableButton extends React.Component {
 
 ExpandableButton.propTypes = {
   color: React.PropTypes.string,
-  onTouchTap: React.PropTypes.func
+  initialSize: React.PropTypes.string,
+  materialIcon: React.PropTypes.string,
+  onTouchTap: React.PropTypes.func,
+  style: React.PropTypes.object
 };
 
 
