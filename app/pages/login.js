@@ -136,7 +136,10 @@ class Login extends React.Component {
         initialSize='13.53vw'
         materialIcon='arrow_forward'
         onTouchTap={() => this.setState({kind: 'login'})}
-        style={styles.expandableButton}
+        style={{
+          ...styles.expandableButton,
+          marginLeft: `${-13.53 / 2}vw`
+        }}
       >
         {loginDialog}
       </ExpandableButton>

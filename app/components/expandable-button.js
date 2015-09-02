@@ -31,7 +31,6 @@ class ExpandableButton extends React.Component {
       backgroundColor: this.props.color,
       width: this.props.initialSize,
       height: this.props.initialSize,
-      marginLeft: `calc(-1 * ${this.props.initialSize} / 2)`,
       ...this.props.style
     };
 
