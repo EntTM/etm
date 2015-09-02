@@ -48,7 +48,7 @@ class Login extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.loginError && !!nextProps.loginError) {
+    if (this.props.loginError !== nextProps.loginError) {
       this.setState({kind: 'failed'});
     }
   }
